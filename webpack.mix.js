@@ -10,7 +10,43 @@ const mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
+mix
+    //
+    // ─── STYLESHEETS ─────────────────────────────────────────────────
+    //
 
-mix.js('resources/js/app.js', 'public/js')
-    .vue()
-    .sass('resources/sass/app.scss', 'public/css');
+    .styles(
+        [
+            'resources/css/app.css',
+        ],
+        'public/css/app.css',
+    )
+
+    //
+    // ─── JAVASCRIPTS ─────────────────────────────────────────────────
+    //
+
+    .scripts(
+        [
+            'resources/js/app.js',
+        ],
+        'public/js/app.js'
+    )
+
+    //
+    // ─── STATIC FILES ────────────────────────────────────────────────
+    //
+
+    .copy(
+        [
+            'resources/assets/images/favicon.ico',
+        ],
+        'public/images/',
+    )
+
+    //
+    // ─── WEBPACK MIX OTHER CONFIGURATIONS ────────────────────────────
+    //
+    // .sass('resources/sass/app.scss', 'public/css')
+
+    .version();
