@@ -14,4 +14,9 @@ class category extends Model
         'parent_id',
         'name_en',
     ];
+    // nemidonam dorost nevashtam ya na!!
+    public function Ads()
+    {
+        return $this->hasOne(Category::class);
+    }
 }
