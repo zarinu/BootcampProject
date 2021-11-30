@@ -16,7 +16,8 @@ class CreateAdsTable extends Migration
         Schema::create('ads', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('user_id')->nullable(false);
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->char('title', 27);
             $table->string('desc', 303);
             $table->integer('price');
