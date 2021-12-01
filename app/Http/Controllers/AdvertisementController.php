@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ade;
+use App\Models\Advertisement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AdeController extends Controller
+class AdvertisementController extends Controller
 {
     //
     public function index()
     {
-        $ads = Ade::where('user_id', Auth::user()->id)->get();
+        $ads = Advertisement::where('user_id', Auth::user()->id)->get();
         return view('index', ['ads' => $ads]);
     }
 }
