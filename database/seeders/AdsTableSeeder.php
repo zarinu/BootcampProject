@@ -19,7 +19,10 @@ class AdsTableSeeder extends Seeder
         Ads::create([
             'title'=>$faker->text(20),
             'desc'=>$faker->text(250),
-            'name_en'=>$faker->text(50)
+            'price'=>$faker->randomDigitNot(0),
+            'mobileNo'=>$faker->phoneNumber(),
+            'adress'=>$faker->address()
+
         ]);
     }
     }
