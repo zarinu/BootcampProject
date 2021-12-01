@@ -22,4 +22,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/ads', [App\Http\Controllers\AdeController::class, 'index'])->name('index');
+Route::get('/ads', [App\Http\Controllers\AdeController::class, 'index'])->middleware('auth')->name('index');
