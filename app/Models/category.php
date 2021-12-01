@@ -17,6 +17,6 @@ class category extends Model
     // nemidonam dorost nevashtam ya na!!
     public function Ads()
     {
-        return $this->hasOne(Category::class);
+        return $this->hasMany(Ads::class);
     }
 }
