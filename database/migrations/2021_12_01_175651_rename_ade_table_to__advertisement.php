@@ -13,7 +13,7 @@ class RenameAdeTableToAdvertisement extends Migration
      */
     public function up()
     {
-        Schema::rename('ades', 'Advertisements');
+        Schema::rename('ades', 'advertisements');
     }
 
     /**
