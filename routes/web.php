@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\{AdvertisementController};
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +15,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
+Route::get('/', [AdvertisementController::class, 'index'])->name('index');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/ads', [App\Http\Controllers\AdeController::class, 'index'])->middleware('auth')->name('index');
+Route::middleware('auth')->prefix('advertisements')->group(function () {
+    Route::get('/{id}', [AdvertisementController::class, 'show'])->name('show');
+});
