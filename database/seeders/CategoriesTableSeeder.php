@@ -14,13 +14,13 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-    //     $faker=\Faker\Factory::create();
-    // foreach(range(1,10) as $item){
-    //     Category::create([
-    //         'parent_id'=>$faker->randomDigitNot(0),
-    //         'name'=>$faker->text(50),
+        $faker=\Faker\Factory::create();
+    foreach(range(1,10) as $item){
+        Category::create([
+            'parent_id'=>$faker->randomDigitNot(0),
+            'name'=>$faker->text(50),
 
-    //     ]);
-    // }
+        ]);
+    }
     }
 }
