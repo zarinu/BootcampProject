@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+// use App\Models\Category;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,9 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $category=Category::finde(1);
-        $ads=$category->ads;
-        dd($ads);
+        // $category=Category::finde(1);
+        // $ads=$category->ads;
+        // dd($ads);
+        return view('home');
     }
 
 }
