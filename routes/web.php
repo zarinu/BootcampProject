@@ -16,11 +16,20 @@ use App\Http\Controllers\{AdvertisementController, CategoryController};
 */
 
 Auth::routes();
-// Route::get('/', [AdvertisementController::class, 'index'])->name('ads.index');
+
+//don't comment this line baby! ask me to tell you, love you
+Route::get('/', [AdvertisementController::class, 'index'])->name('ads.index');
 
 Route::middleware('auth')->prefix('ads')->group(function () {
-    Route::get('/{id}', [AdvertisementController::class, 'index'])->name('ads.index');
+    Route::get('/{adId}', [AdvertisementController::class, 'show'])->name('ads.show');
+    Route::get('/create', [AdvertisementController::class, 'create'])->name('ads.create');
+    Route::post('/', [AdvertisementController::class, 'store'])->name('ads.store');
+    Route::get('/{adId}/edit', [AdvertisementController::class, 'edit'])->name('ads.edit');
+    Route::put('/{adId}', [AdvertisementController::class, 'update'])->name('ads.update');
+    Route::get('/{adId}/delete', [AdvertisementController::class, 'delete'])->name('ads.delete');
+    Route::delete('/{adId}', [AdvertisementController::class, 'destroy'])->name('ads.destroy');
+});
+
+Route::middleware('auth')->prefix('categories')->group(function () {
     Route::post('/category/{id}', [CategoryController::class, 'select'])->name('ads.select');
-    Route::post('/create/{id}', [AdvertisementController::class, 'create'])->name('ads.create');
-    Route::post('/store/{id}', [AdvertisementController::class, 'store'])->name('ads.store');
 });
