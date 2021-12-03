@@ -1,0 +1,66 @@
+@extends('layouts.master')
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 mt-5 mb-3" >
+            <div class="card" >
+                <div class="card-header">Create New Advertisement </div>
+                <div class="card-body">
+                    <div>
+                        {{-- <p>{{$id->category_id->name}}</p> --}}
+                    </div>
+                   <form action="{{route('ads.create')}}" method="POST">
+                       @csrf
+                    <div class="form-group">
+                        <label for="title">title</lable>
+                        <input class="form-control @error('title') form-control-invalid @enderror " name="category" type="text" id="category" value="{{old('title')}}">
+                         @error('title')
+                             <p class="invalid-feedback d-block">
+                                 <strong>{{$message}}</strong>
+                             </p>
+                         @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="desc">description</lable>
+                        <input class="form-control @error('desc') form-control-invalid @enderror " name="desc" type="text" id="desc" value="{{old('desc')}}">
+                         @error('desc')
+                             <p class="invalid-feedback d-block">
+                                 <strong>{{$message}}</strong>
+                             </p>
+                         @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="price">price</lable>
+                        <input class="form-control @error('price') form-control-invalid @enderror " name="price" type="text" id="price" value="{{old('price')}}">
+                         @error('price')
+                             <p class="invalid-feedback d-block">
+                                 <strong>{{$message}}</strong>
+                             </p>
+                         @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="adress">address</lable>
+                        <input class="form-control @error('adress') form-control-invalid @enderror " name="adress" type="text" id="adress" value="{{old('adress')}}">
+                         @error('adress')
+                             <p class="invalid-feedback d-block">
+                                 <strong>{{$message}}</strong>
+                             </p>
+                         @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="mobileNo">mobileNumber</lable>
+                        <input class="form-control @error('mobileNo') form-control-invalid @enderror " name="mobileNo" type="text" id="mobileNo" value="{{old('mobileNo')}}">
+                         @error('mobileNo')
+                             <p class="invalid-feedback d-block">
+                                 <strong>{{$message}}</strong>
+                             </p>
+                         @enderror
+                    </div>
+                       <button type="submit" class="btn  btn-dark">submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

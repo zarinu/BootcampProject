@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\{AdvertisementController};
+use App\Http\Controllers\{AdvertisementController, CategoryController};
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +16,11 @@ use App\Http\Controllers\{AdvertisementController};
 */
 
 Auth::routes();
-Route::get('/', [AdvertisementController::class, 'index'])->name('index');
+// Route::get('/', [AdvertisementController::class, 'index'])->name('ads.index');
 
-Route::middleware('auth')->prefix('advertisements')->group(function () {
-    Route::get('/{id}', [AdvertisementController::class, 'show'])->name('show');
+Route::middleware('auth')->prefix('ads')->group(function () {
+    Route::get('/{id}', [AdvertisementController::class, 'index'])->name('ads.index');
+    Route::post('/category/{id}', [CategoryController::class, 'select'])->name('ads.select');
+    Route::post('/create/{id}', [AdvertisementController::class, 'create'])->name('ads.create');
+    Route::post('/store/{id}', [AdvertisementController::class, 'store'])->name('ads.store');
 });
