@@ -11,7 +11,7 @@ class AdvertisementController extends Controller
     //
     public function index()
     {
-        $ads = Advertisement::where('user_id', Auth::user()->id)->get();
-        return view('index', ['ads' => $ads]);
+        $ads = Advertisement::where('user_id', Auth::user()->id)->paginate(3);
+        return view('ads.index', compact('ads'));
     }
 }
