@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Add Some Ad'),
+    'name' => env('APP_NAME', 'fallback_app_name'),
 
     /*
     |--------------------------------------------------------------------------
