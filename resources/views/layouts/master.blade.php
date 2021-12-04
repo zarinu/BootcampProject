@@ -9,6 +9,10 @@
     <title>{{config('app.name')}}</title>
 </head>
 <body>
-    @yield('content')
+    <div class="container fluid">
+        @include('layouts.header')
+        @yield('content')
+        @include('layouts.footer')
+    </div>
 </body>
 </html>
