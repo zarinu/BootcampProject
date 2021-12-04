@@ -7,7 +7,7 @@ use App\Models\Ads;
 use App\Models\Advertisement;
 use Illuminate\Database\Seeder;
 
-class AdsTableSeeder extends Seeder
+class AdvertisementSeeder extends Seeder
 {
     /**
      * Run the database seeds.
