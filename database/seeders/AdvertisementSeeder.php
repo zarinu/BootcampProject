@@ -16,16 +16,17 @@ class AdvertisementSeeder extends Seeder
      */
     public function run()
     {
-        $faker=\Faker\Factory::create();
-    foreach(range(1,10) as $item){
-        Advertisement::create([
-            'title'=>$faker->text(20),
-            'desc'=>$faker->text(250),
-            'price'=>$faker->randomDigitNot(0),
-            'mobileNo'=>$faker->phoneNumber(),
-            'adress'=>$faker->address()
-
-        ]);
-    }
+        $faker = \Faker\Factory::create();
+        foreach (range(1, 10) as $item) {
+            Advertisement::create([
+                'user_id' => '1',
+                'category_id' => '1',
+                'title' => $faker->text(20),
+                'desc' => $faker->text(250),
+                'price' => $faker->randomDigitNot(0),
+                'mobileNo' => $faker->phoneNumber(),
+                'adress' => $faker->address()
+            ]);
+        }
     }
 }
