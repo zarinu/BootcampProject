@@ -9,5 +9,5 @@
         </div>
     </div>
     @endforeach
-    <div>{{$ads->links()}}}</div>
+    <div>{{$ads->links()}}</div>
 @endsection
