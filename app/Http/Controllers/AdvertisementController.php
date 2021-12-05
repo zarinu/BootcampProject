@@ -14,7 +14,7 @@ class AdvertisementController extends Controller
         // $userwiht = User::has('sdkfj')->get;
         // dd($userwiht);
         $ads = Advertisement::where('user_id', Auth::user()->id)->paginate(5);
-        return view('layouts.master', compact('ads'));
+        return view('index', compact('ads'));
     }
     public function show($adID)
     {
@@ -22,5 +22,8 @@ class AdvertisementController extends Controller
         //check if this $ade does not exist
         if(empty($ade->toArray())) dd("fuck it empty");
         return view('show')->with(['ade' => $ade[0]]);
+    }
+    public function create() {
+        return view('create');
     }
 }
