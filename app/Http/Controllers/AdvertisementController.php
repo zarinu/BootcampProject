@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Advertisement, User};
+use App\Models\{Advertisement, category, User};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,7 +24,8 @@ class AdvertisementController extends Controller
         return view('show')->with(['ade' => $ade[0]]);
     }
     public function create() {
-        $categories = ['eat', 'car', 'home'];
+
+        $categories = category::all();
         return view('create')->with(['categories' => $categories]);
     }
 }

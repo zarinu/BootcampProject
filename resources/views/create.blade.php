@@ -9,9 +9,9 @@
         <p>enter mobile number : </p><input type="text">
         <p>enter address : </p><input type="text">
         <p>enter category</p> :
-        <select name="cars" id="cars">
+        <select name="category">
             @foreach($categories as $category)
-            <option value="zahra">{{$category}}</option>
+            <option value={{$category->name}}>{{$category->name}}</option>
             @endforeach
         </select>
     </form>
