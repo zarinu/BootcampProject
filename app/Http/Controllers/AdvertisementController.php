@@ -24,6 +24,7 @@ class AdvertisementController extends Controller
         return view('show')->with(['ade' => $ade[0]]);
     }
     public function create() {
-        return view('create');
+        $categories = ['eat', 'car', 'home'];
+        return view('create')->with(['categories' => $categories]);
     }
 }
