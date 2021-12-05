@@ -9,8 +9,25 @@
                     <div>
                         {{-- <p>{{$id->category_id->name}}</p> --}}
                     </div>
-                   <form action="{{route('ads.create')}}" method="POST">
+                   <form action="{{route('ads.store')}}" method="POST">
                        @csrf
+                    <div class="form-group">
+                        <label for="sel1">Select your Category:</label>
+                            <select class="form-control" id="sel1">
+                                @foreach ($categoreis as $category)
+                                     <option>{{$category->name}}</option>
+                                @endforeach
+                            </select>
+                        <br>
+                    <div class="form-group">
+                        <label for="title">title</lable>
+                        <input class="form-control @error('title') form-control-invalid @enderror " name="category" type="text" id="category" value="{{old('title')}}">
+                         @error('title')
+                             <p class="invalid-feedback d-block">
+                                 <strong>{{$message}}</strong>
+                             </p>
+                         @enderror
+                    </div>
                     <div class="form-group">
                         <label for="title">title</lable>
                         <input class="form-control @error('title') form-control-invalid @enderror " name="category" type="text" id="category" value="{{old('title')}}">
