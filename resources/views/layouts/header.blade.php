@@ -1,14 +1,15 @@
 <div class="row">
     {{-- for button and for example user-icon... --}}
     <div class="col-sm-2">
-        <button type="button" class="btn btn-danger">Add Advertisement</button>
+        <a class="btn  btn-sm btn-secondary float-left" href="{{route('ads.create')}}">Create Ads </a>
         <a href="#">
             <span class="glyphicon glyphicon-user"></span>
-          </a>
+        </a>
     </div>
     {{-- for navbar search... --}}
     <div class="col-sm-8">
-        <form action="/action_page.php">
+        <form action="{{route('')}}" method="POST">
+            @csrf
             <input type="text" placeholder="Search.." name="search">
             <button type="submit"><i class="fa fa-search"></i></button>
           </form>
