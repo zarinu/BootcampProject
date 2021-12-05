@@ -27,4 +27,23 @@ class AdvertisementController extends Controller
         $categories = Category::all();
         return view('create')->with(['categories' => $categories]);
     }
+    public function store(Request $request) {
+        //validate kardan request ha badan anjam mishe haji
+    
+        //inja mikham logic konam
+        $ade = new Advertisement();
+        $ade->title = $request->title;
+        $ade->desc = $request->desc;
+        $ade->price = $request->price;
+        $ade->adress = $request->adress;
+        $ade->mobileNo = $request->phoneNo;
+        $ade->user_id = Auth::user()->id;
+        $ade->category_id = $request->category;
+
+        if ($ade->save()) {
+            return redirect('/ads/' . $ade->id);
+        }
+
+        return; // 422
+    }
 }

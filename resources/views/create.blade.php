@@ -2,18 +2,20 @@
 @section('content')
 <div>
     <p>welcome {{Auth::user()->name}}</p>
-    <form>
-        <p>enter title : </p><input type="text">
-        <p>enter desc :</p><input type="text">
-        <p>enter price : </p><input type="text">
-        <p>enter mobile number : </p><input type="text">
-        <p>enter address : </p><input type="text">
+    <form action="{{route('ads.store')}}" method="POST">
+        @csrf
+        <p>enter title : </p><input type="text" name="title">
+        <p>enter desc :</p><input type="text" name="desc">
+        <p>enter price : </p><input type="text" name="price">
+        <p>enter mobile number : </p><input type="text" name="phoneNo">
+        <p>enter adress : </p><input type="text" name="adress">
         <p>enter category</p> :
         <select name="category">
             @foreach($categories as $category)
-            <option value={{$category->name}}>{{$category->name}}</option>
+            <option value={{$category->id}}>{{$category->name}}</option>
             @endforeach
         </select>
+        <input type="submit">
     </form>
 </div>
 @endsection
