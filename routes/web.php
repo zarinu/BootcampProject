@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\{AdvertisementController, CategoryController, HomeController};
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\UserPanel\AdvertisementController;
+use App\Http\Controllers\Admin\AdminPanel\CategoryController;
+
 
 /*
 |--------------------------------------------------------------------------
