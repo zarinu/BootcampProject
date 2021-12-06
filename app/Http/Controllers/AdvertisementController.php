@@ -53,4 +53,23 @@ class AdvertisementController extends Controller
         $categories = Category::all();
         return view('edit')->with(['categories' => $categories, 'ade' => $ade]);
     }
+    public function update(Request $request, $adID) {
+        //validate kardan request ha badan anjam mishe haji
+    
+        //inja mikham logic konam
+        $ade = Advertisement::find($adID);
+        $ade->title = $request->title;
+        $ade->desc = $request->desc;
+        $ade->price = $request->price;
+        $ade->adress = $request->adress;
+        $ade->mobileNo = $request->phoneNo;
+        $ade->user_id = Auth::user()->id;
+        $ade->category_id = $request->category;
+
+        if ($ade->save()) {
+            return redirect('/ads/' . $ade->id);
+        }
+
+        return; // 422
+    }
 }
