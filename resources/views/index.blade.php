@@ -10,6 +10,7 @@
     <p>mobile number : {{$ade->mobileNo}}</p>
     <p>address : {{$ade->adress}}</p>
     <br>
+    <hr>
     @endforeach
 </div>
 @endsection

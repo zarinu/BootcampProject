@@ -8,7 +8,7 @@
     </div>
     {{-- for navbar search... --}}
     <div class="col-sm-8">
-        <form action="{{route('')}}" method="POST">
+        <form action="{{route('ads.search')}}" method="POST">
             @csrf
             <input type="text" placeholder="Search.." name="search">
             <button type="submit"><i class="fa fa-search"></i></button>

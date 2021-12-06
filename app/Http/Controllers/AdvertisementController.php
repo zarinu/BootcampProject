@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Advertisement, User};
+use App\Models\{Advertisement, Category, User};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +14,7 @@ class AdvertisementController extends Controller
         // $userwiht = User::has('sdkfj')->get;
         // dd($userwiht);
         $ads = Advertisement::where('user_id', Auth::user()->id)->paginate(5);
-        return view('layouts.master', compact('ads'));
+        return view('index', compact('ads'));
     }
     public function show($adID)
     {
@@ -22,5 +22,28 @@ class AdvertisementController extends Controller
         //check if this $ade does not exist
         if(empty($ade->toArray())) dd("fuck it empty");
         return view('show')->with(['ade' => $ade[0]]);
+    }
+    public function create() {
+        $categories = Category::all();
+        return view('create')->with(['categories' => $categories]);
+    }
+    public function store(Request $request) {
+        //validate kardan request ha badan anjam mishe haji
+    
+        //inja mikham logic konam
+        $ade = new Advertisement();
+        $ade->title = $request->title;
+        $ade->desc = $request->desc;
+        $ade->price = $request->price;
+        $ade->adress = $request->adress;
+        $ade->mobileNo = $request->phoneNo;
+        $ade->user_id = Auth::user()->id;
+        $ade->category_id = $request->category;
+
+        if ($ade->save()) {
+            return redirect('/ads/' . $ade->id);
+        }
+
+        return; // 422
     }
 }
