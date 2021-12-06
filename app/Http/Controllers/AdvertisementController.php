@@ -46,4 +46,11 @@ class AdvertisementController extends Controller
 
         return; // 422
     }
+    public function edit($adID) {
+        //inja bayad permission mojod and ejaze bedam
+        $ade = Advertisement::find($adID);
+
+        $categories = Category::all();
+        return view('edit')->with(['categories' => $categories, 'ade' => $ade]);
+    }
 }
