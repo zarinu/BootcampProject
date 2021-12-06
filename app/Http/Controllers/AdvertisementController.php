@@ -72,4 +72,10 @@ class AdvertisementController extends Controller
 
         return; // 422
     }
+    public function delete($adID) {
+        //inja bayad permission mojod and ejaze bedam
+        $ade = Advertisement::find($adID);
+
+        return view('delete')->with(['ade' => $ade]);
+    }
 }
