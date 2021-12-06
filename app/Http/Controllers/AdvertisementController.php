@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AdeStoreRequest;
 use App\Models\{Advertisement, Category, User};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -9,6 +10,13 @@ use Illuminate\Support\Facades\Auth;
 class AdvertisementController extends Controller
 {
     //
+    public function showAll()
+    {
+        // $userwiht = User::has('sdkfj')->get;
+        // dd($userwiht);
+        $ads = Advertisement::all();
+        return view('showAll', compact('ads'));
+    }
     public function index()
     {
         // $userwiht = User::has('sdkfj')->get;
@@ -23,15 +31,15 @@ class AdvertisementController extends Controller
         if (empty($ade->toArray())) dd("fuck it empty");
         return view('show')->with(['ade' => $ade[0]]);
     }
-    public function create()
+    public function create(Request $request)
     {
+        
         $categories = Category::all();
         return view('create')->with(['categories' => $categories]);
     }
-    public function store(Request $request)
+    public function store(AdeStoreRequest $request)
     {
         //validate kardan request ha badan anjam mishe haji
-
         //inja mikham logic konam
         $ade = new Advertisement();
         $ade->title = $request->title;
@@ -56,7 +64,7 @@ class AdvertisementController extends Controller
         $categories = Category::all();
         return view('edit')->with(['categories' => $categories, 'ade' => $ade]);
     }
-    public function update(Request $request, $adID)
+    public function update(AdeStoreRequest $request, $adID)
     {
         //validate kardan request ha badan anjam mishe haji
 

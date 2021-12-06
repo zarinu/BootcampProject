@@ -17,11 +17,12 @@ use App\Http\Controllers\{AdvertisementController, CategoryController, HomeContr
 Auth::routes();
 
 //don't comment this line baby! ask me to tell you, love you
-Route::get('/', [AdvertisementController::class, 'index'])->middleware('auth')->name('ads.index');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [AdvertisementController::class, 'showAll'])->name('index');
 
 
 Route::middleware('auth')->prefix('ads')->group(function () {
+    Route::get('/', [AdvertisementController::class, 'index'])->name('ads.index');
     Route::get('/create', [AdvertisementController::class, 'create'])->name('ads.create');
     Route::get('/{adID}', [AdvertisementController::class, 'show'])->name('ads.show');
     Route::post('/', [AdvertisementController::class, 'store'])->name('ads.store');
