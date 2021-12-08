@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\UserPanel;
+namespace App\Http\Controllers\Panel\UserPanel;
 
 use App\Http\Requests\AdeStoreRequest;
 use App\Models\{Advertisement, Category, User};

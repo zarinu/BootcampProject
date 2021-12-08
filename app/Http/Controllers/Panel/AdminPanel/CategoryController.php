@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\AdminPanel;
+namespace App\Http\Controllers\Panel\AdminPanel;
 
 use App\Models\Category;
 use App\Http\Controllers\Controller;
