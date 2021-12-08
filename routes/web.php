@@ -44,3 +44,9 @@ Route::middleware('auth')->prefix('ads')->group(function () {
 Route::middleware('auth')->prefix('categories')->group(function () {
     Route::post('/category/{id}', [CategoryController::class, 'select'])->name('ads.select');
 });
+
+Route::middleware('auth')->prefix('comments')->group(function () {
+    Route::post('/', [CategoryController::class, 'create'])->name('comments.create');
+    //and some mooooooooooooooooore
+});
+
