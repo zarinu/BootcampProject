@@ -23,6 +23,7 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/', [AdvertisementController::class, 'showAds'])->name('index');
 Route::post('/show', [AdvertisementController::class, 'seeAds'])->name('ads.seeAds');
+// Route::get('/d', [AdvertisementController::class, 'findAds'])->name('ads.findAds');
 
 Route::middleware('auth')->prefix('ads')->group(function () {
     Route::get('/', [AdvertisementController::class, 'index'])->name('ads.index');
