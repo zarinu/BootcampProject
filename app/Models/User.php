@@ -43,8 +43,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function Ads()
+    public function Advertisements()
     {
-        return $this->hasOne(Ade::class);
+        return $this->hasOne(Advertisement::class);
     }
 }

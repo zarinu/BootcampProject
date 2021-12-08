@@ -7,23 +7,15 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}" ></link>
     <link rel="stylesheet" href="{{asset('js/app.js')}}" ></link>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>{{config('app.name')}}</title>
+    <title></title>
 </head>
 <body>
 
         @include('partials.header')
         <div class="container-fluid p-3  border ">
-            <div class="row">
-                <div class="col-sm-2">
-                    @include('partials.sideBar')
-
-                </div>
-                <div class="col-sm-10">
-                    @yield('content')
-                </div>
-              </div>
+            @yield('content')
         </div>
-        @include('partials.footer')
+        {{-- @include('partials.footer') --}}
 
 </body>
 </html>
