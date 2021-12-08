@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Admin\UserPanel\AdvertisementController;
-use App\Http\Controllers\Admin\AdminPanel\CategoryController;
+use App\Http\Controllers\Panel\UserPanel\AdvertisementController as UserAdsController;
+use App\Http\Controllers\Front\AdvertisementController as FrontAdsController;
+use App\Http\Controllers\Panel\AdminPanel\CategoryController;
 
 
 /*
@@ -17,25 +18,27 @@ use App\Http\Controllers\Admin\AdminPanel\CategoryController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
 
-//don't comment this line baby! ask me to tell you, love you
+Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/', [AdvertisementController::class, 'showAds'])->name('index');
-Route::post('/show', [AdvertisementController::class, 'seeAds'])->name('ads.seeAds');
-// Route::get('/d', [AdvertisementController::class, 'findAds'])->name('ads.findAds');
+
+Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
+    Route::get('/', [FrontAdsController::class, 'index'])->name('index');
+    Route::post('/', [FrontAdsController::class, 'show'])->name('show');
+    // Route::get('/d', [UserAdsController::class, 'findAds'])->name('ads.findAds');
+});
 
 Route::middleware('auth')->prefix('ads')->group(function () {
-    Route::get('/', [AdvertisementController::class, 'index'])->name('ads.index');
-    Route::get('/create', [AdvertisementController::class, 'create'])->name('ads.create');
-    Route::get('/{adID}', [AdvertisementController::class, 'show'])->name('ads.show');
-    Route::post('/', [AdvertisementController::class, 'store'])->name('ads.store');
-    Route::get('/{adID}/edit', [AdvertisementController::class, 'edit'])->name('ads.edit');
-    Route::put('/{adID}', [AdvertisementController::class, 'update'])->name('ads.update');
-    Route::get('/{adID}/delete', [AdvertisementController::class, 'delete'])->name('ads.delete');
-    Route::delete('/{adID}', [AdvertisementController::class, 'destroy'])->name('ads.destroy');
+    Route::get('/', [UserAdsController::class, 'index'])->name('ads.index');
+    Route::get('/create', [UserAdsController::class, 'create'])->name('ads.create');
+    Route::get('/{adID}', [UserAdsController::class, 'show'])->name('ads.show');
+    Route::post('/', [UserAdsController::class, 'store'])->name('ads.store');
+    Route::get('/{adID}/edit', [UserAdsController::class, 'edit'])->name('ads.edit');
+    Route::put('/{adID}', [UserAdsController::class, 'update'])->name('ads.update');
+    Route::get('/{adID}/delete', [UserAdsController::class, 'delete'])->name('ads.delete');
+    Route::delete('/{adID}', [UserAdsController::class, 'destroy'])->name('ads.destroy');
 
-    Route::delete('/search', [AdvertisementController::class, 'search'])->name('ads.search');
+    Route::delete('/search', [UserAdsController::class, 'search'])->name('ads.search');
 });
 
 Route::middleware('auth')->prefix('categories')->group(function () {

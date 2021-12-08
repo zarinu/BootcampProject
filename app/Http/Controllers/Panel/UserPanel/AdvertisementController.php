@@ -11,28 +11,6 @@ use App\Http\Controllers\Controller;
 class AdvertisementController extends Controller
 {
     //
-    public function showAds()
-    {
-        // $userwiht = User::has('sdkfj')->get;
-        // dd($userwiht);
-        $categories = Category::all();
-        $ads = Advertisement::paginate(5);
-        return view('ads.showAds', compact(['ads','categories']));
-    }
-// find ads with user_id forigen key
-    public function findAds()
-    {
-        $ads=User::Find(1)->Advertisements;
-        dd( $ads);
-    }
-
-    public function seeAds(Request $request)
-    {
-        $id=$request->id;
-        //  dd($id);
-        $ads = Advertisement::where('id',$id)->get();
-        return view('ads.seeAds',compact('ads'));
-    }
     public function index()
     {
         // $userwiht = User::has('sdkfj')->get;
