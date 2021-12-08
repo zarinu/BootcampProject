@@ -10,10 +10,20 @@
     <title>{{config('app.name')}}</title>
 </head>
 <body>
-    <div class="container fluid">
+
         @include('partials.header')
-        @yield('content')
+        <div class="container-fluid p-3  border ">
+            <div class="row">
+                <div class="col-sm-2">
+                    @include('partials.sideBar')
+
+                </div>
+                <div class="col-sm-10">
+                    @yield('content')
+                </div>
+              </div>
+        </div>
         @include('partials.footer')
-    </div>
+
 </body>
 </html>
