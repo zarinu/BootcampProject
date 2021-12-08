@@ -29,7 +29,7 @@ class AdvertisementController extends Controller
     {
 
         $categories = Category::all();
-        return view('create')->with(['categories' => $categories]);
+        return view('ads.create')->with(['categories' => $categories]);
     }
     public function store(AdeStoreRequest $request)
     {
