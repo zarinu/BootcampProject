@@ -10,7 +10,12 @@
                     <hr>
                     {{$ade->price}}
                 </p>
-                <a href="#" class="btn btn-primary">See Ads</a>
+                <form action="{{route('ads.seeAds')}}" method="POST">
+                    @csrf
+                    <input type="hidden"  name="id" value="{{$ade->id}}">
+                    <button type="submit" class="btn btn-primary">See Ads</button>
+                </form>
+
             </div>
         </div>
     </div>
