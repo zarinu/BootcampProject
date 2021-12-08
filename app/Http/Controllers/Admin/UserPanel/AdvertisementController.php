@@ -18,6 +18,13 @@ class AdvertisementController extends Controller
         $ads = Advertisement::paginate(5);
         return view('ads.showAds', compact('ads'));
     }
+// find ads with user_id forigen key
+    public function findAds()
+    {
+        $ads=User::Find(6)->Advertisements;
+        dd( $ads);
+    }
+
     public function seeAds(Request $request)
     {
         $id=$request->id;
