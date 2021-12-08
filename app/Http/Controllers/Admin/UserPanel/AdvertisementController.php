@@ -18,6 +18,13 @@ class AdvertisementController extends Controller
         $ads = Advertisement::paginate(5);
         return view('ads.showAds', compact('ads'));
     }
+    public function seeAds(Request $request)
+    {
+        $id=$request->id;
+        //  dd($id);
+        $ads = Advertisement::where('id',$id)->get();
+        return view('ads.seeAds',compact('ads'));
+    }
     public function index()
     {
         // $userwiht = User::has('sdkfj')->get;
