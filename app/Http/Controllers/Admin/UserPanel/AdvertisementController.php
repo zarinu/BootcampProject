@@ -15,13 +15,14 @@ class AdvertisementController extends Controller
     {
         // $userwiht = User::has('sdkfj')->get;
         // dd($userwiht);
+        $categories = Category::all();
         $ads = Advertisement::paginate(5);
-        return view('ads.showAds', compact('ads'));
+        return view('ads.showAds', compact(['ads','categories']));
     }
 // find ads with user_id forigen key
     public function findAds()
     {
-        $ads=User::Find(6)->Advertisements;
+        $ads=User::Find(1)->Advertisements;
         dd( $ads);
     }
 
