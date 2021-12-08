@@ -21,7 +21,7 @@ Auth::routes();
 
 //don't comment this line baby! ask me to tell you, love you
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/', [AdvertisementController::class, 'showAll'])->name('index');
+Route::get('/', [AdvertisementController::class, 'showAds'])->name('index');
 
 
 Route::middleware('auth')->prefix('ads')->group(function () {
