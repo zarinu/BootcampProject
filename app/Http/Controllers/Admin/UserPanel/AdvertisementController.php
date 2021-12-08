@@ -11,12 +11,12 @@ use App\Http\Controllers\Controller;
 class AdvertisementController extends Controller
 {
     //
-    public function showAll()
+    public function showAds()
     {
         // $userwiht = User::has('sdkfj')->get;
         // dd($userwiht);
-        $ads = Advertisement::all();
-        return view('showAll', compact('ads'));
+        $ads = Advertisement::paginate(5);
+        return view('ads.showAds', compact('ads'));
     }
     public function index()
     {
@@ -34,7 +34,7 @@ class AdvertisementController extends Controller
     }
     public function create(Request $request)
     {
-        
+
         $categories = Category::all();
         return view('create')->with(['categories' => $categories]);
     }
