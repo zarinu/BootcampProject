@@ -27,7 +27,6 @@ class AdvertisementController extends Controller
     }
     public function create(Request $request)
     {
-
         $categories = Category::all();
         return view('ads.create')->with(['categories' => $categories]);
     }

@@ -28,17 +28,20 @@ class AdeStoreRequest extends FormRequest
     {
         // dd("lsafl");
         return [
-            'title' => 'required|email|unique:users',
-            'desc' => 'required|string|max:50',
-            'adress' => 'required'
+            'title' => 'required|string|max:50|min:8',
+            'desc' => 'required|string|max:250|min:12',
+            'adress' => 'required|max:50',
+            'price' => 'size:3-5',
+            'mobileNo' => 'size:12',
+            'ccategory' => '1-12'
         ];
     }
     public function messages()
     {
         return [
             'title.required' => 'title is required!',
-            'desc.required' => 'Name is required!',
-            'adress.required' => 'Password is required!'
+            'desc.required' => 'description is required!',
+            'adress.required' => 'adress is required!'
         ];
     }
 }
