@@ -49,4 +49,3 @@ Route::middleware('auth')->prefix('comments')->group(function () {
     Route::post('/', [CategoryController::class, 'create'])->name('comments.create');
     //and some mooooooooooooooooore
 });
-
