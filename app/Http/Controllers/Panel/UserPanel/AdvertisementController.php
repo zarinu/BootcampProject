@@ -17,7 +17,7 @@ class AdvertisementController extends Controller
         // dd($userwiht);
         $categories = Category::all();
         $ads = Advertisement::where('user_id', Auth::user()->id)->paginate(8);
-        return view('ads.index', compact('ads', 'categories'));
+        return view('userAds.index', compact('ads', 'categories'));
     }
     public function show($adID)
     {
