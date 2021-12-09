@@ -45,10 +45,6 @@ Route::middleware('auth')->prefix('categories')->group(function () {
 });
 
 Route::middleware('auth')->prefix('comments')->group(function () {
-<<<<<<< HEAD
-    Route::post('/create', [CommentController::class, 'create'])->name('comments.create');
-=======
     Route::get('/create', [CommentController::class, 'create'])->name('comments.create');
->>>>>>> e268df01898d752db74b9649b1d7a3b2875cfd81
     //and some mooooooooooooooooore
 });
