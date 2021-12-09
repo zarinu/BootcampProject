@@ -23,7 +23,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix' => '/'], function () {
     Route::get('/', [FrontAdsController::class, 'index'])->name('index');
-    Route::post('/', [FrontAdsController::class, 'show'])->name('show');
+    Route::get('/{adID}', [FrontAdsController::class, 'show'])->name('show');
     // Route::get('/d', [UserAdsController::class, 'findAds'])->name('ads.findAds');
 });
 
@@ -45,6 +45,7 @@ Route::middleware('auth')->prefix('categories')->group(function () {
 });
 
 Route::middleware('auth')->prefix('comments')->group(function () {
-    Route::get('/create', [CommentController::class, 'create'])->name('comments.create');
+    Route::get('/create/{tadID}', [CommentController::class, 'create'])->name('comments.create');
+    Route::post('/', [CommentController::class, 'store'])->name('comments.store');
     //and some mooooooooooooooooore
 });
