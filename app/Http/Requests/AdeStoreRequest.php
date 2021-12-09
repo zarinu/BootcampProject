@@ -33,7 +33,7 @@ class AdeStoreRequest extends FormRequest
             'adress' => 'required|max:50',
             'price' => 'size:3-5',
             'mobileNo' => 'size:12',
-            'ccategory' => '1-12'
+            'category' => '1-12'
         ];
     }
     public function messages()
