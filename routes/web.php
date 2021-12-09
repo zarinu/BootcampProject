@@ -7,9 +7,6 @@ use App\Http\Controllers\Panel\UserPanel\AdvertisementController as UserAdsContr
 use App\Http\Controllers\Front\AdvertisementController as FrontAdsController;
 use App\Http\Controllers\Panel\AdminPanel\CategoryController;
 use App\Http\Controllers\Panel\UserPanel\CommentController;
-
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes

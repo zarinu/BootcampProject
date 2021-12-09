@@ -22,5 +22,23 @@
         </div>
     </div>
     @endforeach
+<div class="card">
+    <div class="card-header"><h2>Comments</h2></div>
+    <div class="card-body">
+        <form action="{{route("comments.create")}}" method="POST">
+            @csrf
+        <button type="submit" class="btn btn-primary" style="float: right">Add Comments</button>
+        </form>
+    </div>
+  </div>
+  {{-- THIS PLACE FOR SHOW ALL COMMENTS --}}
+{{-- @foreach ($comments as $comment ) --}}
+<div class="card">
+    <div class="card-header"><h2>All Comments:</h2></div>
+    {{-- <div class="card-body">{{$comment->body}} --}}
+    </div>
+  </div>
+{{-- @endforeach --}}
 </div>
+
 @endsection
