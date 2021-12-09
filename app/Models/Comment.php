@@ -16,4 +16,9 @@ class Comment extends Model
         'is_status'//baraye comment haee ke mored taeed admine va mitune namayesh dade beshe
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class)->get()->toArray()[0];
+    }
+
 }

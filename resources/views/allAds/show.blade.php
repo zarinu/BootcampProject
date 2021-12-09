@@ -25,6 +25,8 @@
         @foreach ($comments as $comment)
         <div class="card-body">
             <p>{{$comment->body}}</p>
+            <p>added by : {{$comment->user()['name']}}</p>
+            <br>
         </div>
         @endforeach
         <a href="{{route('comments.create', ['tadID' => $ade->id])}}">Add a comment</a>
