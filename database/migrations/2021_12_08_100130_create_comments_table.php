@@ -13,10 +13,12 @@ class CreateCommentsTable extends Migration
      */
     public function up()
     {
+        Schema::enableForeignKeyConstraints();
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('ads_id');
+            $table->foreignId('user_id')->Constraints()->onUpdate('cascade');
+            $table->foreignId('ads_id')->Constraints()->onUpdate('cascade');
+
             $table->string('body',1000);
             $table->boolean('is_status');
             $table->timestamps();

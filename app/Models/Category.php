@@ -15,8 +15,8 @@ class Category extends Model
         'name_en',
     ];
     // nemidonam dorost nevashtam ya na!!
-    public function Ads()
+    public function Advertisements()
     {
-        return $this->hasMany(Ads::class);
+        return $this->hasMany(Advertisements::class);
     }
 }
