@@ -16,12 +16,8 @@ class CreateCommentsTable extends Migration
         Schema::enableForeignKeyConstraints();
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->Constraints('users')->onDelete('cascade')->onUpdate('cascade');
-
-            $table->unsignedBigInteger('ads_id');
-            $table->foreign('ads_id')->Constraints('advertisements')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('user_id')->Constraints()->onUpdate('cascade');
+            $table->foreignId('ads_id')->Constraints()->onUpdate('cascade');
 
             $table->string('body',1000);
             $table->boolean('is_status');

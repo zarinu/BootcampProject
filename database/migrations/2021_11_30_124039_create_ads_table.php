@@ -16,12 +16,8 @@ class CreateAdsTable extends Migration
         Schema::create('ads', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->Constraints('users')->onDelete('cascade')->onUpdate('cascade');
-
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->Constraints('categories')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('user_id')->Constraints()->onUpdate('cascade');
+            $table->foreignId('category_id')->Constraints()->onUpdate('cascade');
 
             $table->char('title', 27);
             $table->string('desc', 303);
