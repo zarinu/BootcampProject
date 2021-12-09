@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\{Advertisement, Category, User, Comment};
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdvertisementController extends Controller
 {
@@ -12,15 +13,16 @@ class AdvertisementController extends Controller
     public function index()
     {
         $categories = Category::all();
+        // dd(User::pluck('name', 'id')->toSql();;rawSql);
         $ads = Advertisement::paginate(6);
-        return view('allAds.index', compact(['ads','categories']));
+        return view('allAds.index', compact(['ads', 'categories']));
     }
-// // find ads with user_id forigen key
-//     public function findAds()
-//     {
-//         $ads=User::Find(1)->Advertisements;
-//         dd( $ads);
-//     }
+    // // find ads with user_id forigen key
+    //     public function findAds()
+    //     {
+    //         $ads=User::Find(1)->Advertisements;
+    //         dd( $ads);
+    //     }
 
     public function show(Request $request, $adID)
     {
@@ -29,6 +31,6 @@ class AdvertisementController extends Controller
         $categories = Category::all();
         $ade = Advertisement::find($adID);
         $comments = Comment::all();
-        return view('allAds.show',compact('ade', 'comments', 'categories'));
+        return view('allAds.show', compact('ade', 'comments', 'categories'));
     }
 }

@@ -18,7 +18,7 @@
     </div>
     {{-- for image icon ... --}}
     <div class="col-sm-2">
-        <img src="{{asset('/images/image.png')}}" style="float:right;" >
+        <img style="height: 56px; width: 56px;" src="{{asset('/images/Logo.png')}}" style="float:right;" >
     </div>
   </div>
 </div>
