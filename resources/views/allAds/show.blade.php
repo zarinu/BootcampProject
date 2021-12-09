@@ -2,7 +2,6 @@
 @section('content')
 
 <div class="card">
-    @foreach ($ads as $ade)
     <div class="card-header">
         <div class="d-inline-flex p-3">
             <h5>Title:</h5>
@@ -21,24 +20,15 @@
             <div class="p-2">{{$ade->adress}}</div>
         </div>
     </div>
-    @endforeach
-<div class="card">
-    <div class="card-header"><h2>Comments</h2></div>
-    <div class="card-body">
-        <form action="{{route("comments.create")}}" method="POST">
-            @csrf
-        <button type="submit" class="btn btn-primary" style="float: right">Add Comments</button>
-        </form>
+    <div class="card">
+        <h2>All Comments :</h2>
+        @foreach ($comments as $comment)
+        <div class="card-body">
+            <p>{{$comment->body}}</p>
+        </div>
+        @endforeach
+        <a href="{{route('comments.create', ['tadID' => $ade->id])}}">Add a comment</a>
     </div>
-  </div>
-  {{-- THIS PLACE FOR SHOW ALL COMMENTS --}}
-{{-- @foreach ($comments as $comment ) --}}
-<div class="card">
-    <div class="card-header"><h2>All Comments:</h2></div>
-    {{-- <div class="card-body">{{$comment->body}} --}}
-    </div>
-  </div>
-{{-- @endforeach --}}
 </div>
-
+{{-- THIS PLACE FOR SHOW ALL COMMENTS --}}
 @endsection
