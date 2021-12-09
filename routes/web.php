@@ -6,6 +6,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Panel\UserPanel\AdvertisementController as UserAdsController;
 use App\Http\Controllers\Front\AdvertisementController as FrontAdsController;
 use App\Http\Controllers\Panel\AdminPanel\CategoryController;
+use App\Http\Controllers\Panel\UserPanel\CommentController;
+
 
 
 /*
@@ -46,6 +48,6 @@ Route::middleware('auth')->prefix('categories')->group(function () {
 });
 
 Route::middleware('auth')->prefix('comments')->group(function () {
-    Route::post('/', [CategoryController::class, 'create'])->name('comments.create');
+    Route::get('/create', [CommentController::class, 'create'])->name('comments.create');
     //and some mooooooooooooooooore
 });
