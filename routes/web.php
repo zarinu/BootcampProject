@@ -22,7 +22,7 @@ use App\Http\Controllers\Panel\AdminPanel\CategoryController;
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => '/'], function () {
     Route::get('/', [FrontAdsController::class, 'index'])->name('index');
     Route::post('/', [FrontAdsController::class, 'show'])->name('show');
     // Route::get('/d', [UserAdsController::class, 'findAds'])->name('ads.findAds');

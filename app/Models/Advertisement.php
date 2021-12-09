@@ -11,7 +11,13 @@ class Advertisement extends Model
     // {
     //     return $this->belongsTo(User::class, 'user_id');
     // }
-        public function Comments()
+
+
+    public function Category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+    public function Comments()
     {
         return $this->hasMany(Comments::class);
     }
