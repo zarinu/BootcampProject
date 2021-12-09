@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\Models\{Advertisement, Category, User};
+use App\Models\{Advertisement, Category, User, Comment};
 use Illuminate\Http\Request;
 
 class AdvertisementController extends Controller
@@ -22,11 +22,13 @@ class AdvertisementController extends Controller
 //         dd( $ads);
 //     }
 
-    public function show(Request $request)
+    public function show(Request $request, $adID)
     {
-        $id=$request->id;
+        // $id=$request->id;
         //  dd($id);
-        $ads = Advertisement::where('id',$id)->get();
-        return view('allAds.show',compact('ads'));
+        $categories = Category::all();
+        $ade = Advertisement::find($adID);
+        $comments = Comment::all();
+        return view('allAds.show',compact('ade', 'comments', 'categories'));
     }
 }
