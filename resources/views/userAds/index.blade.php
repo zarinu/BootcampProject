@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-    @foreach ($ads as $ade )
+    @foreach ($ads as $ade)
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">{{$ade->title}}</h4>

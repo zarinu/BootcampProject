@@ -11,12 +11,9 @@ class AdvertisementController extends Controller
     // for all user can see it complete tomoroow
     public function index()
     {
-        dd("lla");
-        // $userwiht = User::has('sdkfj')->get;
-        // dd($userwiht);
         $categories = Category::all();
-        $ads = Advertisement::paginate(8);
-        return view('ads.showAds', compact(['ads','categories']));
+        $ads = Advertisement::paginate(6);
+        return view('allAds.index', compact(['ads','categories']));
     }
 // // find ads with user_id forigen key
 //     public function findAds()
@@ -30,6 +27,6 @@ class AdvertisementController extends Controller
         $id=$request->id;
         //  dd($id);
         $ads = Advertisement::where('id',$id)->get();
-        return view('ads.seeAds',compact('ads'));
+        return view('allAds.show',compact('ads'));
     }
 }
