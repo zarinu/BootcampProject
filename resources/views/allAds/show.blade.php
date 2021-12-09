@@ -1,6 +1,8 @@
 @extends('layouts.masterShow')
 @section('content')
+
 <div class="card">
+    @foreach ($ads as $ade)
     <div class="card-header">
         <div class="d-inline-flex p-3">
             <h5>Title:</h5>
@@ -19,6 +21,6 @@
             <div class="p-2">{{$ade->adress}}</div>
         </div>
     </div>
-
+    @endforeach
 </div>
 @endsection
