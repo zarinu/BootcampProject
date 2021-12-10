@@ -21,11 +21,11 @@ class CommentController extends Controller
         $comment = new Comment();
         $comment->body = $request->body;
         $comment->ads_id = $request->tadID;
-        $comment->user = Auth::user()->id;
+        $comment->user_id = Auth::user()->id;
         $comment->is_status = false;
 
         if ($comment->save()) {
-            return redirect('/ads/{$comment->ads_id}');
+            return redirect('/' . $comment->ads_id);
         }
 
         return; // 422
