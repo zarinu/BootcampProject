@@ -12,7 +12,7 @@ class Advertisement extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function Category()
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }
