@@ -47,8 +47,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
-    public function Advertisement()
+    public function advertisement()
     {
-        return $this->belongsTo(Advertisement::class);
+        return $this->hasMany(Advertisement::class);
     }
 }
