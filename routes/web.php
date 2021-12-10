@@ -47,7 +47,7 @@ Route::middleware('auth')->prefix('categories')->group(function () {
 Route::middleware('auth')->prefix('comments')->group(function () {
 
     Route::get('/create/{tadID}', [CommentController::class, 'create'])->name('comments.create');
-    Route::post('/edit/{tadID}', [CommentController::class, 'edit'])->name('comments.edit');
+    Route::post('/{tadID}/edit', [CommentController::class, 'edit'])->name('comments.edit');
     Route::post('/', [CommentController::class, 'store'])->name('comments.store');
     //and some mooooooooooooooooore
 });
