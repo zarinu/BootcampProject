@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Panel\UserPanel;
 
 use App\Http\Requests\AdeStoreRequest;
-use App\Models\{Advertisement, Category, User};
+use App\Models\{Advertisement, Category, User, Comment};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
@@ -13,6 +13,10 @@ class AdvertisementController extends Controller
     //
     public function index()
     {
+        // $comment = Advertisement::find(2)->comment;
+        $comment = Advertisement::find(3)->user;
+        dd($comment);
+        User::find(3)->user;
         // $userwiht = User::has('sdkfj')->get;
         // dd($userwiht);
         // Auth::user()->with('Advertisements');
@@ -24,7 +28,7 @@ class AdvertisementController extends Controller
     {
         $ade = Advertisement::where('user_id', Auth::user()->id)->where('id', $adID)->get();
         //check if this $ade does not exist
-        if (empty($ade->toArray())) dd("fuck it empty");
+        if (empty($ade->toArray())) dd("advertisement with this id doesn't exist or access denied!");
         return view('show')->with(['ade' => $ade[0]]);
     }
     public function create(Request $request)
@@ -34,8 +38,6 @@ class AdvertisementController extends Controller
     }
     public function store(AdeStoreRequest $request)
     {
-        //validate kardan request ha badan anjam mishe haji
-        //inja mikham logic konam
         $ade = new Advertisement();
         $ade->title = $request->title;
         $ade->desc = $request->desc;
@@ -54,7 +56,8 @@ class AdvertisementController extends Controller
     public function edit($adID)
     {
         //inja bayad permission mojod and ejaze bedam
-        $ade = Advertisement::find($adID);
+        $ade = Advertisement::where('user_id', Auth::user()->id)->where('id', $adID)->get();
+        if (empty($ade->toArray())) dd("advertisement with this id doesn't exist or access denied!");
 
         $categories = Category::all();
         return view('edit')->with(['categories' => $categories, 'ade' => $ade]);
@@ -62,6 +65,8 @@ class AdvertisementController extends Controller
     public function update(AdeStoreRequest $request, $adID)
     {
         //validate kardan request ha badan anjam mishe haji
+        $ade = Advertisement::where('user_id', Auth::user()->id)->where('id', $adID)->get();
+        if (empty($ade->toArray())) dd("advertisement with this id doesn't exist or access denied!");
 
         //inja mikham logic konam
         $ade = Advertisement::find($adID);
@@ -82,17 +87,16 @@ class AdvertisementController extends Controller
     public function delete($adID)
     {
         //inja bayad permission mojod and ejaze bedam
-        $ade = Advertisement::find($adID);
+        $ade = Advertisement::where('user_id', Auth::user()->id)->where('id', $adID)->get();
+        if (empty($ade->toArray())) dd("advertisement with this id doesn't exist or access denied!");
 
         return view('delete')->with(['ade' => $ade]);
     }
     public function destroy(Request $request, $adID)
     {
-        //validate kardan request ha badan anjam mishe haji
+        $ade = Advertisement::where('user_id', Auth::user()->id)->where('id', $adID)->get();
+        if (empty($ade->toArray())) dd("advertisement with this id doesn't exist or access denied!");
 
-        //inja mikham logic konam
-
-        $ade = Advertisement::find($adID);
         $ade->delete();
         return redirect('/');
     }
