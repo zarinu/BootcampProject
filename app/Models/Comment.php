@@ -22,6 +22,6 @@ class Comment extends Model
     }
     public function advertisement()
     {
-        return $this->belongsTo(Advertisement::class)->get()->toArray()[0];
+        return $this->belongsTo(Advertisement::class, 'ads_id');
     }
 }
