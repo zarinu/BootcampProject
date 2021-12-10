@@ -46,6 +46,16 @@ Route::middleware('auth')->prefix('categories')->group(function () {
 
 Route::middleware('auth')->prefix('comments')->group(function () {
     Route::get('/create/{tadID}', [CommentController::class, 'create'])->name('comments.create');
+    Route::get('/edit/{tadID}', [CommentController::class, 'edit'])->name('comments.edit');
     Route::post('/', [CommentController::class, 'store'])->name('comments.store');
     //and some mooooooooooooooooore
 });
+
+// Route::middleware('auth')->prefix('admin')->group(function () {
+//     Route::get('/home/{tadID}', [CommentController::class, 'create'])->name('admin.create');
+//     Route::get('/users', [CommentController::class, '#'])->name('admin.#');
+//     Route::get('/ads', [CommentController::class, '#'])->name('admin.#');
+//     Route::post('/comments', [AdminPanelCommentController::class, '#'])->name('admin.#');
+//     Route::post('/categories', [CategoryController::class, '#'])->name('comments.#');
+
+// });
