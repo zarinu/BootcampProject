@@ -13,13 +13,7 @@ class AdvertisementController extends Controller
     //
     public function index()
     {
-        // $comment = Advertisement::find(2)->comment;
-        $user = Comment::find(2)->advertisement;
-        dd($user);
-        User::find(3)->user;
-        // $userwiht = User::has('sdkfj')->get;
-        // dd($userwiht);
-        // Auth::user()->with('Advertisements');
+        // $userwiht = User::has('advertisement')->get();
         $categories = Category::all();
         $ads = Advertisement::where('user_id', Auth::user()->id)->paginate(8);
         return view('userAds.index', compact('ads', 'categories'));
