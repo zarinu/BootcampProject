@@ -15,5 +15,9 @@ class Category extends Model
         'name_en',
     ];
     // nemidonam dorost nevashtam ya na!!
-
+    // =>>> vali man midonam ^__^ `zarinu`
+    public function advertisement()
+    {
+        return $this->hasMany(Advertisement::class);
+    }
 }
