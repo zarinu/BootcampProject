@@ -24,7 +24,7 @@ class CommentController extends Controller
     {
         $id=Comment::findOrFail($id);
             $id->delete();
-            return redirect()->route('#');
+            return redirect()->route('ads.show');
     }
     public function edit(Request $request,$id)
     {
@@ -32,6 +32,6 @@ class CommentController extends Controller
         $id->update([
             'body'=>$request-> body
             ]);
-        return redirect()->route('#');
+        return redirect()->route('ads.show');
     }
 }
