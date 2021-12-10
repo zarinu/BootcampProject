@@ -16,7 +16,7 @@ class Advertisement extends Model
     {
         return $this->belongsTo(Category::class);
     }
-    public function Comment()
+    public function comment()
     {
         return $this->hasMany(Comment::class, 'ads_id');
     }

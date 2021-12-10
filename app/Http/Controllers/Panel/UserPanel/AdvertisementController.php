@@ -14,7 +14,7 @@ class AdvertisementController extends Controller
     public function index()
     {
         // $comment = Advertisement::find(2)->comment;
-        $user = Advertisement::find(3)->category;
+        $user = Advertisement::find(2)->comment;
         dd($user);
         User::find(3)->user;
         // $userwiht = User::has('sdkfj')->get;
