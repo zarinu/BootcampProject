@@ -20,4 +20,18 @@ class CommentController extends Controller
     {
         dd("skdlf");
     }
+    public function delete(Request $request,$id)
+    {
+        $id=Comment::findOrFail($id);
+            $id->delete();
+            return redirect()->route('#');
+    }
+    public function edit(Request $request,$id)
+    {
+        $id=Comment::findOrFail($id);
+        $id->update([
+            'body'=>$request-> body
+            ]);
+        return redirect()->route('#');
+    }
 }
