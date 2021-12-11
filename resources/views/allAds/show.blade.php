@@ -25,7 +25,7 @@
         @foreach ($comments as $comment)
         <div class="card-body">
             <p>{{$comment->body}}</p>
-            <p>added by : {{$comment->user()['name']}}</p>
+            <p>added by : {{$comment->user->name}}</p>
             <br>
         </div>
         @endforeach

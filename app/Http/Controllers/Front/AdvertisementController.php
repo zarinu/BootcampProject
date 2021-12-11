@@ -30,7 +30,7 @@ class AdvertisementController extends Controller
         //  dd($id);
         $categories = Category::all();
         $ade = Advertisement::find($adID);
-        $comments = Comment::all();
+        $comments = Comment::where('ads_id', $ade->id)->get();
         return view('allAds.show', compact('ade', 'comments', 'categories'));
     }
 }

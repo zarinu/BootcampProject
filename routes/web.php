@@ -21,12 +21,6 @@ use App\Http\Controllers\Panel\UserPanel\CommentController;
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix' => '/'], function () {
-    Route::get('/', [FrontAdsController::class, 'index'])->name('index');
-    Route::get('/{adID}', [FrontAdsController::class, 'show'])->name('show');
-    // Route::get('/d', [UserAdsController::class, 'findAds'])->name('ads.findAds');
-});
-
 Route::middleware('auth')->prefix('ads')->group(function () {
     Route::get('/', [UserAdsController::class, 'index'])->name('ads.index');
     Route::get('/create', [UserAdsController::class, 'create'])->name('ads.create');
@@ -38,6 +32,12 @@ Route::middleware('auth')->prefix('ads')->group(function () {
     Route::delete('/{adID}', [UserAdsController::class, 'destroy'])->name('ads.destroy');
 
     Route::delete('/search', [UserAdsController::class, 'search'])->name('ads.search');
+});
+
+Route::group(['prefix' => '/'], function () {
+    Route::get('/', [FrontAdsController::class, 'index'])->name('index');
+    Route::get('/{adID}', [FrontAdsController::class, 'show'])->name('show');
+    // Route::get('/d', [UserAdsController::class, 'findAds'])->name('ads.findAds');
 });
 
 Route::middleware('auth')->prefix('categories')->group(function () {

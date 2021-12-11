@@ -43,12 +43,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function user()
+    public function comment()
     {
-        return $this->belongsTo(user::class);
+        return $this->hasMany(Comment::class);
     }
-    public function Advertisement()
+    public function advertisement()
     {
-        return $this->belongsTo(Advertisement::class);
+        return $this->hasMany(Advertisement::class);
     }
 }

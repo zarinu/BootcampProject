@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Comment;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -16,23 +17,14 @@ class CommentSeeder extends Seeder
     public function run()
     {
         //
-        $thisTime = Carbon::now()->format('Y-m-d H:i:s');
-        DB::table('comments')->insertOrIgnore([
-            [
-                'user_id' => '1',
-                'ads_id' => '2',
-                'body' => 'nice ade!',
-                'is_status' => $thisTime,
-                'updated_at' => $thisTime
-            ],
-
-            [
-                'user_id' => '2',
-                'ads_id' => '4',
-                'body' => 'i never seen better than this advertisement',
-                'is_status' => $thisTime,
-                'updated_at' => $thisTime
-            ],
-        ]);
+        $faker = \Faker\Factory::create();
+        foreach (range(1, 40) as $item) {
+            Comment::create([
+                'user_id' => $faker->numberBetween(1, 5),
+                'ads_id' => $faker->numberBetween(1, 20),
+                'body' => $faker->text(100),
+                'is_status' => 0,
+            ]);
+        }
     }
 }

@@ -18,7 +18,17 @@ class CommentController extends Controller
     }
     public function store(Request $request)
     {
-        dd("skdlf");
+        $comment = new Comment();
+        $comment->body = $request->body;
+        $comment->ads_id = $request->tadID;
+        $comment->user_id = Auth::user()->id;
+        $comment->is_status = false;
+
+        if ($comment->save()) {
+            return redirect('/' . $comment->ads_id);
+        }
+
+        return; // 422
     }
     public function delete(Request $request,$id)
     {
