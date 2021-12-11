@@ -16,7 +16,7 @@ class Category extends Model
     ];
     // nemidonam dorost nevashtam ya na!!
     // =>>> vali man midonam ^__^ `zarinu`
-    public function advertisement()
+    public function advertisements()
     {
         return $this->hasMany(Advertisement::class);
     }
