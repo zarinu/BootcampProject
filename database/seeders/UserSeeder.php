@@ -19,7 +19,8 @@ class UserSeeder extends Seeder
             User::create([
                 'name'=>$faker->name(50),
                 'email'=>$faker->email(100),
-                'password'=>$faker->password()
+                //this is 12345678 in laravel hashing method
+                'password'=>'$2y$10$cNMCpQYnd3soKOK/9BT7AuZH14pMQ1MaAdfYvMOVlZI2Pe6PfM8ji'
             ]);
         }
     }
