@@ -12,10 +12,10 @@ class AdvertisementController extends Controller
     // for all user can see it complete tomoroow
     public function index()
     {
-        $categories = Category::all();
+
         // dd(User::pluck('name', 'id')->toSql();;rawSql);
         $ads = Advertisement::paginate(6);
-        return view('allAds.index', compact(['ads', 'categories']));
+        return view('allAds.index', compact('ads'));
     }
     // // find ads with user_id forigen key
     //     public function findAds()
@@ -28,9 +28,8 @@ class AdvertisementController extends Controller
     {
         // $id=$request->id;
         //  dd($id);
-        $categories = Category::all();
         $ade = Advertisement::find($adID);
         $comments = Comment::where('ads_id', $ade->id)->get();
-        return view('allAds.show', compact('ade', 'comments', 'categories'));
+        return view('allAds.show', compact('ade', 'comments'));
     }
 }
