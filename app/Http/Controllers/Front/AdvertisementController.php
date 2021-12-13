@@ -14,11 +14,11 @@ class AdvertisementController extends Controller
     // for all user can see it complete tomoroow
     public function index()
     {
-        $ads = Cache::get('allAds');
-        if(empty($ads)) {
-            Cache::put('allAds', Advertisement::paginate(6), $seconds = 600);
-            $ads = Cache::get('allAds');
-        }
+        $currentPage = request()->get('page', 1);
+
+        $ads = Cache::remember('allAds-' . $currentPage, now()->addMinutes(10), function () {
+            return Advertisement::paginate(6);
+        });
         return view('allAds.index', compact('ads'));
     }
     // // find ads with user_id forigen key
