@@ -14,12 +14,11 @@ class AdvertisementController extends Controller
     // for all user can see it complete tomoroow
     public function index()
     {
-        // $value = Category::all();
-        // $array = ['haie' => 'sdkjf', 'skdfj' => 'skds', ['skjg' => 'sldkfj', 'skdfj' => 'skfdf']];
-        // Cache::put('zahra', $value, $seconds = 60);
-        // $value = Cache::get('zahra');
-        // dd($value);
-        $ads = Advertisement::paginate(6);
+        $ads = Cache::get('allAds');
+        if(empty($ads)) {
+            Cache::put('allAds', Advertisement::paginate(6), $seconds = 600);
+            $ads = Cache::get('allAds');
+        }
         return view('allAds.index', compact('ads'));
     }
     // // find ads with user_id forigen key
