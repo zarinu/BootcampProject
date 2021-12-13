@@ -13,7 +13,7 @@
                 <form action="{{route('show', ['adID' => $ade])}}" method="GET">
                     @csrf
                     <input type="hidden"  name="id" value="{{$ade->id}}">
-                    <button type="submit" class="btn btn-primary">See Ads</button>
+                    <button type="submit" class="btn btn-primary">Show Ads</button>
                 </form>
 
             </div>
