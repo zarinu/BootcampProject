@@ -13,9 +13,6 @@ class AdvertisementController extends Controller
     //
     public function index()
     {
-        // $userwiht = User::has('advertisement')->get();
-        // dd($userwiht);
-        // dd(md5(12345678));
         $categories = Category::all();
         $ads = Advertisement::where('user_id', Auth::user()->id)->paginate(8);
         return view('userAds.index', compact('ads', 'categories'));
@@ -24,13 +21,14 @@ class AdvertisementController extends Controller
     {
         $ade = Advertisement::where('user_id', Auth::user()->id)->where('id', $adID)->get();
         //check if this $ade does not exist
-        if (empty($ade->toArray())) dd("advertisement with this id doesn't exist or access denied!");
-        return view('show')->with(['ade' => $ade[0]]);
+        if (empty($ade->toArray())) abort(404);
+        $categories = Category::all();
+        return view('show')->with(['ade' => $ade[0], 'categories' => $categories]);
     }
     public function create(Request $request)
     {
         $categories = Category::all();
-        return view('ads.create')->with(['categories' => $categories]);
+        return view('userAds.create')->with(['categories' => $categories]);
     }
     public function store(AdeStoreRequest $request)
     {
@@ -52,8 +50,8 @@ class AdvertisementController extends Controller
     public function edit($adID)
     {
         //inja bayad permission mojod and ejaze bedam
-        $ade = Advertisement::where('user_id', Auth::user()->id)->where('id', $adID)->get();
-        if (empty($ade->toArray())) dd("advertisement with this id doesn't exist or access denied!");
+        $ade = Advertisement::where('user_id', Auth::user()->id)->where('id', $adID)->first();
+        if (empty($ade)) abort(404);
 
         $categories = Category::all();
         return view('edit')->with(['categories' => $categories, 'ade' => $ade]);
@@ -62,7 +60,7 @@ class AdvertisementController extends Controller
     {
         //validate kardan request ha badan anjam mishe haji
         $ade = Advertisement::where('user_id', Auth::user()->id)->where('id', $adID)->get();
-        if (empty($ade->toArray())) dd("advertisement with this id doesn't exist or access denied!");
+        if (empty($ade->toArray())) abort(404);
 
         //inja mikham logic konam
         $ade = Advertisement::find($adID);
@@ -73,6 +71,7 @@ class AdvertisementController extends Controller
         $ade->mobileNo = $request->phoneNo;
         $ade->user_id = Auth::user()->id;
         $ade->category_id = $request->category;
+        // $ade->update($request);
 
         if ($ade->save()) {
             return redirect('/ads/' . $ade->id);
@@ -84,14 +83,14 @@ class AdvertisementController extends Controller
     {
         //inja bayad permission mojod and ejaze bedam
         $ade = Advertisement::where('user_id', Auth::user()->id)->where('id', $adID)->get();
-        if (empty($ade->toArray())) dd("advertisement with this id doesn't exist or access denied!");
+        if (empty($ade->toArray())) abort(404);
 
         return view('delete')->with(['ade' => $ade]);
     }
     public function destroy(Request $request, $adID)
     {
         $ade = Advertisement::where('user_id', Auth::user()->id)->where('id', $adID)->get();
-        if (empty($ade->toArray())) dd("advertisement with this id doesn't exist or access denied!");
+        if (empty($ade->toArray())) abort(404);
 
         $ade->delete();
         return redirect('/');

@@ -26,14 +26,13 @@ class AdeStoreRequest extends FormRequest
      */
     public function rules()
     {
-        // dd("lsafl");
         return [
             'title' => 'required|string|max:50|min:8',
             'desc' => 'required|string|max:250|min:12',
             'adress' => 'required|max:50',
             'price' => 'size:3-5',
             'mobileNo' => 'size:12',
-            'category' => '1-12',
+            'category' => 'between:1,12',
         ];
     }
     public function messages()
