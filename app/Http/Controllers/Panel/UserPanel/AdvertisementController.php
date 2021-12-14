@@ -51,16 +51,7 @@ class AdvertisementController extends Controller
         $ade = Advertisement::where('user_id', Auth::user()->id)->where('id', $adID)->first();
         if (empty($ade)) abort(404);
 
-        // $ade = Advertisement::find($adID);
-        // $ade->title = $request->title;
-        // $ade->desc = $request->desc;
-        // $ade->price = $request->price;
-        // $ade->adress = $request->adress;
-        // $ade->mobileNo = $request->phoneNo;
-        // $ade->user_id = Auth::user()->id;
-        // $ade->category_id = $request->category;
         $ade->update($request->all());
-
         if ($ade->save()) {
             return redirect('/ads/' . $ade->id);
         }
