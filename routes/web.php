@@ -3,10 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Panel\UserPanel\AdvertisementController as UserAdsController;
+use App\Http\Controllers\Panel\UserPanel\{AdvertisementController as UserAdsController, CommentController,  FavoriteController};
 use App\Http\Controllers\Front\{AdvertisementController as FrontAdsController, FilterController};
 use App\Http\Controllers\Panel\AdminPanel\CategoryController;
-use App\Http\Controllers\Panel\UserPanel\CommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +22,9 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->prefix('ads')->group(function () {
     Route::get('/', [UserAdsController::class, 'index'])->name('ads.index');
+
+    Route::get('/favorite', [FavoriteController::class, 'index'])->name('favorite');
+
     Route::get('/create', [UserAdsController::class, 'create'])->name('ads.create');
     Route::get('/{adID}', [UserAdsController::class, 'show'])->name('ads.show');
     Route::post('/', [UserAdsController::class, 'store'])->name('ads.store');

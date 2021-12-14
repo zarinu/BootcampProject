@@ -9,5 +9,4 @@
         </div>
     </div>
     @endforeach
-    <div>{{$ads->links()}}</div>
 @endsection
