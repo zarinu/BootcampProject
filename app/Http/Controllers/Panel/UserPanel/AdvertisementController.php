@@ -32,14 +32,7 @@ class AdvertisementController extends Controller
     }
     public function store(AdeStoreRequest $request)
     {
-        $ade = new Advertisement();
-        $ade->title = $request->title;
-        $ade->desc = $request->desc;
-        $ade->price = $request->price;
-        $ade->adress = $request->adress;
-        $ade->mobileNo = $request->phoneNo;
-        $ade->user_id = Auth::user()->id;
-        $ade->category_id = $request->category;
+        $ade = Advertisement::create($request->all());
 
         if ($ade->save()) {
             return redirect('/ads/' . $ade->id);

@@ -27,8 +27,8 @@ class AdeStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|max:50|min:8',
-            'desc' => 'required|string|max:250|min:12',
+            'title' => 'required|string|max:50|min:4',
+            'desc' => 'required|string|max:250|min:7',
             'adress' => 'required|max:50',
             'price' => 'size:3-5',
             'mobileNo' => 'size:12',
