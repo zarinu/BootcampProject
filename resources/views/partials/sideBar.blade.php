@@ -1,10 +1,10 @@
 <div>
-    <p> Category</p>
+    <p>Category</p>
 </div>
 <ul class="list-group">
     @foreach ($categories as $category )
     <li class="list-group-item">
-        <a href="google.com" class="categories">
+        <a href="{{route('filter.category', ['catID' => $category->id])}}" class="categories">
             {{$category->name}}
         </a>
     </li>
