@@ -1,5 +1,6 @@
 @extends('layouts.masterUserPanel')
 @section('content')
+
 <div class="container">
     <div class="card mt-4">
         <div class="card-header" style="background-color:#E7D2CC">{{ __('Dashboard') }}</div>
@@ -9,8 +10,8 @@
                         {{ session('status') }}
                     </div>
                 @endif
-            <p></p>
-            {{ __('You are logged in!') }}
+            <p>WELLCOME TO YOUR PROFILE PANEL DEAR {{ Auth::user()->name }}</p>
+
             </div>
       </div>
 
