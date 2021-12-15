@@ -23,13 +23,10 @@ Auth::routes();
 Route::middleware('auth')->prefix('ads')->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/', [UserAdsController::class, 'index'])->name('ads.index');
-
+    Route::post('/logout', [UserAdsController::class, 'logout'])->name('ads.logout');
     Route::get('/favorite', [FavoriteController::class, 'index'])->name('favorite');
 
     Route::get('/create', [UserAdsController::class, 'create'])->name('ads.create');
-    // just for test not completed
-    // Route::get('/category', function () {
-    //     return view('userAds.category');})->name('ads.category');
     Route::get('/{adID}', [UserAdsController::class, 'show'])->name('ads.show');
     Route::post('/', [UserAdsController::class, 'store'])->name('ads.store');
     Route::get('/{adID}/edit', [UserAdsController::class, 'edit'])->name('ads.edit');
