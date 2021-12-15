@@ -12,13 +12,10 @@
               <a class="nav-link" href="{{route('ads.create')}}">CreateNewAds</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">MyAds</a>
+                <a class="nav-link" href="{{route('ads.show', $adID=Auth::user()->id)}}">MyAds</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Favorite</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{route('ads.category')}}">Category</a>
             </li>
        </div>
         {{-- search bar nav --}}
@@ -28,11 +25,11 @@
           <button class="btn ml-2" type="button" style="background-color:#EF7C8E">Search</button>
         </form>
 
-    {{-- dropdown button show --}}
-    <div style="float: right">
-        <a href="#"><button class="btn" style="background-color:#EF7C8E" type="button">LogOut
-          </button></a>
-    </div>
+    {{-- button logout --}}
+    <form action="{{ route('ads.logout') }}" method="POST">
+        @csrf
+      <button type="submit" class="btn" style="background-color:#EF7C8E">logout</button>
+    </form>
 
   </nav>
 
