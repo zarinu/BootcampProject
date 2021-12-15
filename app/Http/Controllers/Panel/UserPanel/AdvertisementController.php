@@ -30,7 +30,7 @@ class AdvertisementController extends Controller
     public function create(Request $request)
     {
         $categories = Category::all();
-        return view('ads.create')->with(['categories' => $categories]);
+        return view('userAds.create')->with(['categories' => $categories]);
     }
     public function store(AdeStoreRequest $request)
     {
