@@ -11,7 +11,6 @@
     <title></title>
 </head>
 <body>
-    @include('sweet::alert')
     <div class="container-fluid">
     @include('partials.headerUserPanel')
         <div class="row">
