@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.masterUserPanel')
 @section('content')
 <div>
     <p>welcome {{Auth::user()->name}}</p>
