@@ -8,10 +8,10 @@
         <p>enter title : </p><input type="text" name="title" placeholder="{{$ade->title}}">
         <p>enter desc :</p><input type="text" name="desc" placeholder="{{$ade->desc}}">
         <p>enter price : </p><input type="text" name="price" placeholder="{{$ade->price}}">
-        <p>enter mobile number : </p><input type="text" name="phoneNo" placeholder="{{$ade->mobileNo}}">
+        <p>enter mobile number : </p><input type="text" name="mobileNo" placeholder="{{$ade->mobileNo}}">
         <p>enter adress : </p><input type="text" name="adress" placeholder="{{$ade->adress}}">
         <p>enter category</p> :
-        <select name="category">
+        <select name="category_id">
             @foreach($categories as $category)
             <option value={{$category->id}}>{{$category->name}}</option>
             @endforeach

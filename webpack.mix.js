@@ -18,6 +18,7 @@ mix
     .styles(
         [
             'resources/css/app.css',
+            'resources/css/main.css'
         ],
         'public/css/app.css',
     )
@@ -30,19 +31,19 @@ mix
         [
             'resources/js/app.js',
         ],
-        'public/js/app.js'
+        'public/js/app.css'
     )
 
     //
     // ─── STATIC FILES ────────────────────────────────────────────────
     //
 
-    .copy(
-        [
-            'resources/assets/images/favicon.ico',
-        ],
-        'public/images/',
-    )
+    // .copy(
+    //     [
+    //         'resources/assets/images/favicon.ico',
+    //     ],
+    //     'public/images/',
+    // )
 
     //
     // ─── WEBPACK MIX OTHER CONFIGURATIONS ────────────────────────────

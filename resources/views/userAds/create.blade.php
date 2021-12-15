@@ -13,7 +13,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="sel1">Select your Category:</label>
-                            <select class="form-control" id="sel1" name="category">
+                            <select class="form-control" id="sel1" name="category_id">
                                 @foreach ($categories as $category)
                                 <option value="{{$category->id}}">{{$category->name}}</option>
                                 @endforeach
@@ -22,6 +22,8 @@
                             <div class="form-group" >
                                 <label for="title">title</lable>
                                     <input  style="width:680px;" class="form-control @error('title') form-control-invalid @enderror " name="category" type="text" id="category" value="{{old('title')}}" required autocomplete="title">
+
+                                    {{-- <input class="form-control @error('title') form-control-invalid @enderror " name="title" type="text" id="title" value="{{old('title')}}" required autocomplete="title"> --}}
                                     @error('title')
                                     <p class="invalid-feedback d-block">
                                         <strong>{{$message}}</strong>
@@ -64,6 +66,7 @@
                                     </p>
                                     @enderror
                             </div>
+                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                             <button type="submit" class="btn  btn-dark">submit</button>
                     </form>
                 </div>

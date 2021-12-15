@@ -3,10 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Panel\UserPanel\AdvertisementController as UserAdsController;
-use App\Http\Controllers\Front\AdvertisementController as FrontAdsController;
+use App\Http\Controllers\Panel\UserPanel\{AdvertisementController as UserAdsController, CommentController,  FavoriteController};
+use App\Http\Controllers\Front\{AdvertisementController as FrontAdsController, FilterController};
 use App\Http\Controllers\Panel\AdminPanel\CategoryController;
-use App\Http\Controllers\Panel\UserPanel\CommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +23,9 @@ Auth::routes();
 Route::middleware('auth')->prefix('ads')->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/', [UserAdsController::class, 'index'])->name('ads.index');
+
+    Route::get('/favorite', [FavoriteController::class, 'index'])->name('favorite');
+
     Route::get('/create', [UserAdsController::class, 'create'])->name('ads.create');
     // just for test not completed
     // Route::get('/category', function () {
@@ -42,6 +44,10 @@ Route::group(['prefix' => '/'], function () {
     Route::get('/', [FrontAdsController::class, 'index'])->name('index');
     Route::get('/{adID}', [FrontAdsController::class, 'show'])->name('show');
     // Route::get('/d', [UserAdsController::class, 'findAds'])->name('ads.findAds');
+});
+
+Route::group(['prefix' => '/filter'], function () {
+    Route::get('/category/{catID}', [FilterController::class, 'category'])->name('filter.category');
 });
 
 Route::middleware('auth')->prefix('categories')->group(function () {

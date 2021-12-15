@@ -4,6 +4,9 @@
     <div class="col-sm-4 " >
         <a class="btn  btn-sm btn-danger" style="float: left;margin-right:5px;" href="{{route('ads.create')}}">Create Ads </a>
         <a href="{{route('home')}}">
+
+        {{-- <a href="{{route('ads.index')}}"> --}}
+
             {{-- <span class="fa fa-user" ></span> --}}
             <button class="btn btn-sm "><i class="fa fa-user" style="font-size:18px;margin-left:15px;"></i> Profile</button>
         </a>
@@ -18,7 +21,7 @@
     </div>
     {{-- for image icon ... --}}
     <div class="col-sm-2">
-        <img style="height: 56px; width: 56px;" src="{{asset('/images/Logo.png')}}" style="float:right;" >
+        <img style="height: 56px; width: 56px;" src="{{asset('/images/logo.png')}}" style="float:right;" >
     </div>
   </div>
 </div>
