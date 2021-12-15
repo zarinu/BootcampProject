@@ -3,7 +3,7 @@
     {{-- for button and for example user-icon... --}}
     <div class="col-sm-4 " >
         <a class="btn  btn-sm btn-danger" style="float: left;margin-right:5px;" href="{{route('ads.create')}}">Create Ads </a>
-        <a href="#">
+        <a href="{{route('home')}}">
             {{-- <span class="fa fa-user" ></span> --}}
             <button class="btn btn-sm "><i class="fa fa-user" style="font-size:18px;margin-left:15px;"></i> Profile</button>
         </a>
