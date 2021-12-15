@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Panel\UserPanel;
 
-use App\Models\Category;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AdeStoreRequest;
 use App\Models\{Advertisement, Comment};
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+use App\Models\Category;
 
 class AdvertisementController extends Controller
 {
@@ -78,4 +78,12 @@ class AdvertisementController extends Controller
         $ade->delete();
         return redirect('/');
     }
+    public function logout(Request $request) {
+
+        Auth::logout();
+
+        return redirect('/');
+
+    }
+
 }
