@@ -19,11 +19,15 @@ use App\Http\Controllers\Panel\UserPanel\CommentController;
 */
 
 Auth::routes();
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->prefix('ads')->group(function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/', [UserAdsController::class, 'index'])->name('ads.index');
     Route::get('/create', [UserAdsController::class, 'create'])->name('ads.create');
+    // just for test not completed
+    // Route::get('/category', function () {
+    //     return view('userAds.category');})->name('ads.category');
     Route::get('/{adID}', [UserAdsController::class, 'show'])->name('ads.show');
     Route::post('/', [UserAdsController::class, 'store'])->name('ads.store');
     Route::get('/{adID}/edit', [UserAdsController::class, 'edit'])->name('ads.edit');
