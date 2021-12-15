@@ -13,6 +13,8 @@ class FavoriteController extends Controller
 {
     //
     public function index() {
+        // Auth::loginUsingId(2);
+        // session_regenerate_id(2);
         $fav = Favorite::where('user_id', Auth::user()->id)->pluck('ads_id')->toArray();
         $ads = Advertisement::findMany($fav);
         
