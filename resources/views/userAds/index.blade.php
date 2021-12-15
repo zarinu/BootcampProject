@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.masterUserPanel')
 @section('content')
     @foreach ($ads as $ade)
     <div class="card">

@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.masterUserPanel')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -19,18 +19,18 @@
                                 @endforeach
                             </select>
                             <br>
-                            <div class="form-group">
+                            <div class="form-group" >
                                 <label for="title">title</lable>
-                                    <input class="form-control @error('title') form-control-invalid @enderror " name="category" type="text" id="category" value="{{old('title')}}" required autocomplete="title">
+                                    <input  style="width:680px;" class="form-control @error('title') form-control-invalid @enderror " name="category" type="text" id="category" value="{{old('title')}}" required autocomplete="title">
                                     @error('title')
                                     <p class="invalid-feedback d-block">
                                         <strong>{{$message}}</strong>
                                     </p>
                                     @enderror
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" >
                                 <label for="desc">description</lable>
-                                    <input class="form-control @error('desc') form-control-invalid @enderror " name="desc" type="text" id="desc" value="{{old('desc')}}" required autocomplete="desc">
+                                    <input  style="width:680px;" class="form-control @error('desc') form-control-invalid @enderror " name="desc" type="text" id="desc" value="{{old('desc')}}" required autocomplete="desc">
                                     @error('desc')
                                     <p class="invalid-feedback d-block">
                                         <strong>{{$message}}</strong>
@@ -39,7 +39,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="price">price</lable>
-                                    <input class="form-control @error('price') form-control-invalid @enderror " name="price" type="text" id="price" value="{{old('price')}}" required autocomplete="price">
+                                    <input style="width:680px;" class="form-control @error('price') form-control-invalid @enderror " name="price" type="text" id="price" value="{{old('price')}}" required autocomplete="price">
                                     @error('price')
                                     <p class="invalid-feedback d-block">
                                         <strong>{{$message}}</strong>
@@ -48,16 +48,16 @@
                             </div>
                             <div class="form-group">
                                 <label for="adress">address</lable>
-                                    <input class="form-control @error('adress') form-control-invalid @enderror " name="adress" type="text" id="adress" value="{{old('adress')}}" required autocomplete="adress">
+                                    <input style="width:680px;" class="form-control @error('adress') form-control-invalid @enderror " name="adress" type="text" id="adress" value="{{old('adress')}}" required autocomplete="adress">
                                     @error('adress')
                                     <p class="invalid-feedback d-block">
                                         <strong>{{$message}}</strong>
                                     </p>
                                     @enderror
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" >
                                 <label for="mobileNo">mobileNumber</lable>
-                                    <input class="form-control @error('mobileNo') form-control-invalid @enderror " name="mobileNo" type="text" id="mobileNo" value="{{old('mobileNo')}}" required autocomplete="mobileNO">
+                                    <input  style="width:680px;" class="form-control @error('mobileNo') form-control-invalid @enderror " name="mobileNo" type="text" id="mobileNo" value="{{old('mobileNo')}}" required autocomplete="mobileNO">
                                     @error('mobileNo')
                                     <p class="invalid-feedback d-block">
                                         <strong>{{$message}}</strong>
