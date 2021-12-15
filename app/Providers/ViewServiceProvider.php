@@ -28,7 +28,7 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
         // define global by cluser
-        View::composer('partials.sideBar', function ($view) {
+        View::composer(['partials.sideBar','userAds.category'], function ($view) {
             $view->with('categories', Category::all());
 
         });
