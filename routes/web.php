@@ -18,11 +18,12 @@ use App\Http\Controllers\Panel\AdminPanel\CategoryController;
 */
 
 Auth::routes();
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->prefix('ads')->group(function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/', [UserAdsController::class, 'index'])->name('ads.index');
-
+    Route::post('/logout', [UserAdsController::class, 'logout'])->name('ads.logout');
     Route::get('/favorite', [FavoriteController::class, 'index'])->name('favorite');
 
     Route::get('/create', [UserAdsController::class, 'create'])->name('ads.create');

@@ -7,6 +7,7 @@ use App\Models\{Advertisement, Comment};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 
 class AdvertisementController extends Controller
 {
@@ -19,14 +20,17 @@ class AdvertisementController extends Controller
     public function show($adID)
     {
         $ade = Advertisement::where('user_id', Auth::user()->id)->where('id', $adID)->first();
-        
+
         //check if this $ade does not exist
         if (empty($ade)) abort(404);
         return view('show', compact('ade'));
     }
     public function create(Request $request)
     {
-        return view('userAds.create');
+
+        $categories = Category::all();
+        return view('userAds.create')->with(['categories' => $categories]);
+
     }
     public function store(AdeStoreRequest $request)
     {
@@ -74,4 +78,12 @@ class AdvertisementController extends Controller
         $ade->delete();
         return redirect('/');
     }
+    public function logout(Request $request) {
+
+        Auth::logout();
+
+        return redirect('/');
+
+    }
+
 }
