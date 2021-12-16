@@ -54,6 +54,7 @@ class AdvertisementController extends Controller
     {
         $ade = Advertisement::where('user_id', Auth::user()->id)->where('id', $adID)->first();
         if (empty($ade)) abort(404);
+        $this->authorize('update', $ade);
 
         $ade->update($request->all());
         if ($ade->save()) {
@@ -74,6 +75,7 @@ class AdvertisementController extends Controller
     {
         $ade = Advertisement::where('user_id', Auth::user()->id)->where('id', $adID)->first();
         if (empty($ade)) abort(404);
+        $this->authorize('delete', $ade);
 
         $ade->delete();
         return redirect('/');
