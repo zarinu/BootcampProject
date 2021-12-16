@@ -39,19 +39,17 @@ class CategoryController extends Controller
     }
     public function edit($id)
     {
-        $id = Category::findOrFail($id);
-        return view('ads.edit', compact('id'));
+        $category = Category::findOrFail($id);
+        return view('admin.category.edit', compact('category'));
     }
     public function update(Request $request, $id)
     {
-        $id = Category::findOrFail($id);
-        $request->validate([
-            'name' => 'required'
-        ]);
-        $id->update([
-            'name' => $request->name
-        ]);
-        return redirect()->route('ads.index');
+        $category = Category::findOrFail($id);
+        // $request->validate([
+        //     'name' => 'required'
+        // ]);
+        $category->update($request->all());
+        return redirect()->route('category.index');
     }
     public function delete(Request $request, $id)
     {
