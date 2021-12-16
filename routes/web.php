@@ -26,6 +26,7 @@ Route::middleware('auth')->prefix('categories')->group(function () {
     Route::post('/', [CategoryController::class, 'store'])->name('category.store');
     Route::get('/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
     Route::put('/{id}', [CategoryController::class, 'update'])->name('category.update');
+    Route::get('/{id}/delete', [CategoryController::class, 'delete'])->name('category.delete');
 });
 
 Route::middleware('auth')->prefix('ads')->group(function () {
