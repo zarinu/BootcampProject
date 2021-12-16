@@ -11,8 +11,13 @@
                     </div>
                 @endif
             <p>WELLCOME TO YOUR PROFILE PANEL DEAR {{ Auth::user()->name }}</p>
-
             </div>
+      </div>
+      {{-- for show ades --}}
+      <div class="d-grid " style="margin-top: 50px;">
+          <a href="#">
+        <button type="button" class="btn btn-block" style="background-color:#E7D2CC ">Click For Veiw All Ads</button>
+          </a>
       </div>
 
 </div>

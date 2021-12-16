@@ -1,21 +1,23 @@
 @extends('layouts.master')
 @section('content')
-    @foreach ($ads as $ade)
+     @foreach ($ads as $ade)
     <div class="d-inline-flex p-2">
         <div class="card " style="width:250px;">
             <div class="card-body">
                 <h3 class="card-title">{{$ade->title}}</h3>
                 <hr>
                 <p class="card-text">{{$ade->desc}}
-                    <hr>
+                   <hr>
                     {{$ade->price}}
                 </p>
                 <form action="{{route('show', ['adID' => $ade])}}" method="GET">
                     @csrf
                     <input type="hidden"  name="id" value="{{$ade->id}}">
-                    <button type="submit" class="btn btn-primary">Show Ads</button>
+                    <button type="submit" class="btn btn-danger">Show Ads</button>
                 </form>
-
+                <a href="{{route('home')}}">
+                    <button type="submit" class="btn btn-danger">Add Favorite</button>
+                </a>
             </div>
         </div>
     </div>

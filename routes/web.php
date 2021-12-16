@@ -31,7 +31,7 @@ Route::middleware('auth')->prefix('ads')->group(function () {
     Route::get('/', [UserAdsController::class, 'index'])->name('ads.index');
     Route::post('/logout', [UserAdsController::class, 'logout'])->name('ads.logout');
     Route::get('/favorite', [FavoriteController::class, 'index'])->name('favorite');
-
+    Route::post('/storefavorite', [FavoriteController::class, 'store'])->name('storefavorite');
     Route::get('/create', [UserAdsController::class, 'create'])->name('ads.create');
     Route::get('/{adID}', [UserAdsController::class, 'show'])->name('ads.show');
     Route::post('/', [UserAdsController::class, 'store'])->name('ads.store');

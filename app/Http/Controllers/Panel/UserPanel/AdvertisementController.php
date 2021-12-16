@@ -24,7 +24,7 @@ class AdvertisementController extends Controller
         Log::info('Showing the user profile for user: '. Auth::user()->id);
         //check if this $ade does not exist
         if (empty($ade)) abort(404);
-        return view('show', compact('ade'));
+        return view('userAds.show', compact('ade'));
     }
     public function create(Request $request)
     {
