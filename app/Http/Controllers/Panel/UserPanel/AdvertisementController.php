@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Illuminate\Support\Facades\Log;
 
 class AdvertisementController extends Controller
 {
@@ -20,7 +21,7 @@ class AdvertisementController extends Controller
     public function show($adID)
     {
         $ade = Advertisement::where('user_id', Auth::user()->id)->where('id', $adID)->first();
-
+        Log::info('Showing the user profile for user: '. Auth::user()->id);
         //check if this $ade does not exist
         if (empty($ade)) abort(404);
         return view('show', compact('ade'));
