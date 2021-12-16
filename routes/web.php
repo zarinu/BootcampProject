@@ -21,6 +21,7 @@ Auth::routes();
 // Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::middleware('auth')->prefix('categories')->group(function () {
     // Route::post('/category/{id}', [CategoryController::class, 'select'])->name('ads.select');
+    Route::get('/', [CategoryController::class, 'index'])->name('category.index');
     Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
     Route::post('/', [CategoryController::class, 'store'])->name('category.store');
 });

@@ -8,7 +8,12 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    //this controller have show, create, update method..
+    public function index()
+    {
+        $categories = Category::all();
+        return view('admin.category.index', compact('categories'));
+    }
+    // this controller have show, create, update method..
     // public function show($id){
 
     //     $category=Category::findOrFail($id);
