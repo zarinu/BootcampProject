@@ -15,36 +15,43 @@ class CategoryController extends Controller
     //   return view('ads.ShowCategory',compact('id'));
     //   }
 
-    public function create(){
+    public function create()
+    {
         return view('admin.category.create');
+    }
+
+    public function store(Request $request)
+    {
+        // $request->validate([
+        //     'name' => 'required'
+        // ]);
+        $category = Category::create($request->all());
+        if ($category->save()) {
+            return redirect()->route('category.index');
         }
 
-    public function store(Request $request){
-          $request->validate([
-              'name'=>'required'
-          ]);
-          Category::create([
-              'name'=>$request-> name
-          ]);
-        }
-    public function edit($id){
-            $id=Category::findOrFail($id);
-            return view('ads.edit',compact('id'));
-
-        }
-    public function update(Request $request, $id){
-            $id=Category::findOrFail($id);
-            $request->validate([
-            'name'=>'required'
-            ]);
-            $id->update([
-                'name'=>$request-> name
-                ]);
-            return redirect()->route('ads.index');
-        }
-    public function delete(Request $request, $id){
-            $id=Category::findOrFail($id);
-            $id->delete();
-            return redirect()->route('ads.index');
-        }
+        return; // 422
+    }
+    public function edit($id)
+    {
+        $id = Category::findOrFail($id);
+        return view('ads.edit', compact('id'));
+    }
+    public function update(Request $request, $id)
+    {
+        $id = Category::findOrFail($id);
+        $request->validate([
+            'name' => 'required'
+        ]);
+        $id->update([
+            'name' => $request->name
+        ]);
+        return redirect()->route('ads.index');
+    }
+    public function delete(Request $request, $id)
+    {
+        $id = Category::findOrFail($id);
+        $id->delete();
+        return redirect()->route('ads.index');
+    }
 }

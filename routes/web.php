@@ -22,7 +22,7 @@ Auth::routes();
 Route::middleware('auth')->prefix('categories')->group(function () {
     // Route::post('/category/{id}', [CategoryController::class, 'select'])->name('ads.select');
     Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
-    Route::get('/', [CategoryController::class, 'store'])->name('category.store');
+    Route::post('/', [CategoryController::class, 'store'])->name('category.store');
 });
 
 Route::middleware('auth')->prefix('ads')->group(function () {
