@@ -19,6 +19,11 @@ use App\Http\Controllers\Panel\AdminPanel\CategoryController;
 
 Auth::routes();
 // Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::middleware('auth')->prefix('categories')->group(function () {
+    // Route::post('/category/{id}', [CategoryController::class, 'select'])->name('ads.select');
+    Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
+    Route::get('/', [CategoryController::class, 'store'])->name('category.store');
+});
 
 Route::middleware('auth')->prefix('ads')->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -45,10 +50,6 @@ Route::group(['prefix' => '/'], function () {
 
 Route::group(['prefix' => '/filter'], function () {
     Route::get('/category/{catID}', [FilterController::class, 'category'])->name('filter.category');
-});
-
-Route::middleware('auth')->prefix('categories')->group(function () {
-    Route::post('/category/{id}', [CategoryController::class, 'select'])->name('ads.select');
 });
 
 Route::middleware('auth')->prefix('comments')->group(function () {
