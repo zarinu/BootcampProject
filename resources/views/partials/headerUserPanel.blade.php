@@ -12,7 +12,7 @@
               <a class="nav-link" href="{{route('ads.create')}}">CreateNewAds</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('ads.show', $adID=Auth::user()->id)}}">MyAds</a>
+                <a class="nav-link" href="{{route('ads.index', $adID=Auth::user()->id)}}">MyAds</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Favorite</a>
