@@ -1,4 +1,4 @@
-@extends('layouts.masterUserPanel')
+@extends('user.layouts.master')
 @section('content')
 
 <div class="card">
@@ -21,13 +21,13 @@
         </div>
         <div >
             <div class="btn-group" style="margin-top: 50px;">
-                <a href="{{route('ads.index')}}">
-                    <button type="button" class="btn btn-block" style="background-color:#E7D2CC ">Click For Veiw All Ads</button>
+                <a href="{{route('user.index')}}">
+                    <button type="button" class="btn btn-block" style="background-color:#E7D2CC ">Click For Veiw All user</button>
                 </a>
             </div>
             <div class="btn-group" style="margin-top: 50px;">
-                <a href="{{route('ads.index')}}">
-            <button type="button" class="btn btn-danger btn-block">Click For Veiw All Ads</button>
+                <a href="{{route('user.index')}}">
+            <button type="button" class="btn btn-danger btn-block">Click For Veiw All user</button>
                 </a>
             </div>
         </div>
