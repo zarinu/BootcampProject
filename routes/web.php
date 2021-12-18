@@ -39,7 +39,7 @@ Route::middleware('auth')->prefix('user')->group(function () {
 
     Route::prefix('comment')->group(function () {
         Route::get('/create/{id}', [CommentUserController::class, 'create'])->name('comment.create');
-        Route::post('/', [CommentUserController::class, 'store'])->name('comments.store');
+        Route::post('/', [CommentUserController::class, 'store'])->name('comment.store');
         //and some mooooooooooooooooore
     });
 });

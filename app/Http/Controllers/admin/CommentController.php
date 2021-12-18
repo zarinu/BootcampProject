@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Panel\UserPanel;
+namespace App\Http\Controllers\admin;
 
 use App\Models\{Comment, Category};
 use Illuminate\Http\Request;
