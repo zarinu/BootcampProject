@@ -21,6 +21,8 @@ Auth::routes();
 // Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
+
+
 Route::middleware('auth')->prefix('user')->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/', [UseruserController::class, 'index'])->name('user.index');

@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\Front\AdvertisementController;
+use App\Http\Controllers\Panel\UserPanel\AdvertisementController as UserPanelAdvertisementController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 class Advertisement extends Model
 {
     use HasFactory;
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -23,6 +26,14 @@ class Advertisement extends Model
         'user_id',
     ];
 
+    public static function findNcheck(UserPanelAdvertisementController $userController, $action, $adID)
+    {
+        $ade = Advertisement::find($adID);
+        if (empty($ade)) abort(404);
+        $userController->authorize($action, $ade);
+        return $ade;
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -36,4 +47,3 @@ class Advertisement extends Model
         return $this->hasMany(Comment::class, 'ads_id');
     }
 }
-
