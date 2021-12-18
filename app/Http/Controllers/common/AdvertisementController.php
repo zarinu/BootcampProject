@@ -28,8 +28,9 @@ class AdvertisementController extends Controller
     //         dd( $ads);
     //     }
 
-    public function show(Request $request, Advertisement $ade)
+    public function show(Request $request, $id)
     {
+        $ade = Advertisement::find($id);
         $comments = Comment::where('ads_id', $ade->id)->get();
         return view('common.show', compact('ade', 'comments'));
     }

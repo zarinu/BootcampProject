@@ -10,17 +10,17 @@ use Illuminate\Support\Facades\Auth;
 class CommentController extends Controller
 {
     //
-    public function create($tadID)
+    public function create($id)
     {
         // $coments = Comment::where('user_id', Auth::user()->id)->get();
         $categories = Category::all();
-        return view('allAds.comments.create', compact('tadID', 'categories'));
+        return view('allAds.comments.create', compact('id', 'categories'));
     }
     public function store(Request $request)
     {
         $comment = new Comment();
         $comment->body = $request->body;
-        $comment->ads_id = $request->tadID;
+        $comment->ads_id = $request->id;
         $comment->user_id = Auth::user()->id;
         $comment->is_status = false;
 

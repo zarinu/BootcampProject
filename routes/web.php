@@ -47,7 +47,7 @@ Route::middleware('auth')->prefix('user')->group(function () {
 Route::group(['prefix' => '/'], function () {
     Route::get('/', [CommonController::class, 'index'])->name('index');
     Route::get('/{id}', [CommonController::class, 'show'])->name('show');
-    // Route::delete('/search', [UserController::class, 'search'])->name('user.search');
+    Route::delete('/search', [UserController::class, 'search'])->name('user.search');
     Route::group(['prefix' => '/filter'], function () {
         Route::get('/category/{id}', [FilterController::class, 'category'])->name('filter.category');
     });

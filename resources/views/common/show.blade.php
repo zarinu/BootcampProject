@@ -29,7 +29,7 @@
             <br>
         </div>
         @endforeach
-        <a href="{{route('comments.create', ['tadID' => $ade->id])}}">Add a comment</a>
+        <a href="{{route('comment.create', ['id' => $ade->id])}}">Add a comment</a>
     </div>
 </div>
 {{-- THIS PLACE FOR SHOW ALL COMMENTS --}}
