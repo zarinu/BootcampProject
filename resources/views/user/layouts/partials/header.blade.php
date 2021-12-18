@@ -12,10 +12,10 @@
               <a class="nav-link" href="{{route('home')}}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{route('ads.create')}}">CreateNewAds</a>
+              <a class="nav-link" href="{{route('user.create')}}">CreateNewuser</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('ads.index', $adID=Auth::user()->id)}}">MyAds</a>
+                <a class="nav-link" href="{{route('user.index', $adID=Auth::user()->id)}}">Myuser</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Favorite</a>
@@ -29,7 +29,7 @@
         </form>
 
     {{-- button logout --}}
-    <form action="{{ route('ads.logout') }}" method="POST">
+    <form action="{{ route('user.logout') }}" method="POST">
         @csrf
       <button type="submit" class="btn" style="background-color:#EF7C8E">logout</button>
     </form>

@@ -12,10 +12,10 @@
 </head>
 <body>
     <div class="container-fluid">
-    @include('layouts.partials.header')
+    @include('user.layouts.partials.header')
         <div class="row">
             {{-- <div class="col-sm-2 mt-3">
-                @include('partials.sideBar')
+                @include('layouts.partials.sideBar')
             </div> --}}
             <div class="col-sm-12">
                 @yield('content')

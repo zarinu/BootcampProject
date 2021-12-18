@@ -23,31 +23,31 @@ class AdvertisementController extends Controller
     {
         $ade = Advertisement::findNcheck($this, 'view', $id);
         Log::info('Showing the user advertisement for user: '. Auth::user()->id . 'on ad with this id' . $id);
-        return view('userAds.show', compact('ade'));
+        return view('user.show', compact('ade'));
     }
     public function create(Request $request)
     {
-        return view('userAds.create');
+        return view('user.create');
     }
     public function store(AdeStoreRequest $request)
     {
         $ade = Advertisement::create($request->all());
         if ($ade->save()) {
-            return redirect()->route('ads.show', ['id' => $ade->id]);
+            return redirect()->route('user.show', ['id' => $ade->id]);
         }
         abort(422);
     }
     public function edit($id)
     {
         $ade = Advertisement::findNcheck($this, 'update', $id);
-        return view('edit', compact('ade'));
+        return view('user.edit', compact('ade'));
     }
     public function update(AdeStoreRequest $request, $id)
     {
         $ade = Advertisement::findNcheck($this, 'update', $id);
         $ade->update($request->all());
         if ($ade->save()) {
-            return redirect()->route('ads.show', ['id' => $ade->id]);
+            return redirect()->route('user.show', ['id' => $ade->id]);
         }
 
         abort(422);
@@ -55,18 +55,18 @@ class AdvertisementController extends Controller
     public function delete($id)
     {
         $ade = Advertisement::findNcheck($this, 'delete', $id);
-        return view('delete', compact('ade'));
+        return view('user.delete', compact('ade'));
     }
     public function destroy(Request $request, $id)
     {
         $ade = Advertisement::findNcheck($this, 'delete', $id);
         $ade->delete();
-        return redirect()->route('ads.index');
+        return redirect()->route('user.index');
     }
     public function logout(Request $request) {
 
         Auth::logout();
-        return redirect()->route('ads.index');
+        return redirect()->route('user.index');
     }
 
 }

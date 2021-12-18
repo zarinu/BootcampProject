@@ -1,4 +1,4 @@
-@extends('layouts.masterUserPanel')
+@extends('user.layouts.master')
 @section('content')
      @foreach ($ads as $ade)
     <div class="d-inline-flex p-2">
@@ -11,12 +11,12 @@
                     {{$ade->price}}
                 </p>
                 <div class="d-flex flex-row ">
-                    <form action="{{route('ads.show', ['adID' => $ade])}}" method="GET">
+                    <form action="{{route('user.show', ['id' => $ade])}}" method="GET">
                         @csrf
                         <input type="hidden"  name="id" value="{{$ade->id}}">
                         <button type="submit" class="btn btn-danger">Show Ads</button>
                     </form>
-                    <form action="{{route('storefavorite', ['adID' => $ade])}}" method="post">
+                    <form action="{{route('favorite.store', ['id' => $ade])}}" method="post">
                         @csrf
                         <input type="hidden"  name="ade-id" value="{{$ade->id}}">
                         <button type="submit"  style="margin-left:75px" class="btn btn-danger"><i class="fa fa-heart-o" aria-hidden="true"></i>
