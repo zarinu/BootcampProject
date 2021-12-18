@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Panel\UserPanel;
+namespace App\Http\Controllers\user;
 
 use App\Http\Requests\AdeStoreRequest;
 use App\Models\{Advertisement, Comment};
@@ -15,13 +15,14 @@ class AdvertisementController extends Controller
     //
     public function index()
     {
+
         $ads = Advertisement::where('user_id', Auth::user()->id)->paginate(8);
-        return view('userAds.index', compact('ads'));
+        return view('user.index', compact('ads'));
     }
-    public function show($adID)
+    public function show($id)
     {
-        $ade = Advertisement::findNcheck($this, 'view', $adID);
-        Log::info('Showing the user advertisement for user: '. Auth::user()->id . 'on ad with this id' . $adID);
+        $ade = Advertisement::findNcheck($this, 'view', $id);
+        Log::info('Showing the user advertisement for user: '. Auth::user()->id . 'on ad with this id' . $id);
         return view('userAds.show', compact('ade'));
     }
     public function create(Request $request)
@@ -32,33 +33,33 @@ class AdvertisementController extends Controller
     {
         $ade = Advertisement::create($request->all());
         if ($ade->save()) {
-            return redirect()->route('ads.show', ['adID' => $ade->id]);
+            return redirect()->route('ads.show', ['id' => $ade->id]);
         }
         abort(422);
     }
-    public function edit($adID)
+    public function edit($id)
     {
-        $ade = Advertisement::findNcheck($this, 'update', $adID);
+        $ade = Advertisement::findNcheck($this, 'update', $id);
         return view('edit', compact('ade'));
     }
-    public function update(AdeStoreRequest $request, $adID)
+    public function update(AdeStoreRequest $request, $id)
     {
-        $ade = Advertisement::findNcheck($this, 'update', $adID);
+        $ade = Advertisement::findNcheck($this, 'update', $id);
         $ade->update($request->all());
         if ($ade->save()) {
-            return redirect()->route('ads.show', ['adID' => $ade->id]);
+            return redirect()->route('ads.show', ['id' => $ade->id]);
         }
 
         abort(422);
     }
-    public function delete($adID)
+    public function delete($id)
     {
-        $ade = Advertisement::findNcheck($this, 'delete', $adID);
+        $ade = Advertisement::findNcheck($this, 'delete', $id);
         return view('delete', compact('ade'));
     }
-    public function destroy(Request $request, $adID)
+    public function destroy(Request $request, $id)
     {
-        $ade = Advertisement::findNcheck($this, 'delete', $adID);
+        $ade = Advertisement::findNcheck($this, 'delete', $id);
         $ade->delete();
         return redirect()->route('ads.index');
     }

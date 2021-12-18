@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Front;
+namespace App\Http\Controllers\common;
 
 use App\Http\Controllers\Controller;
 use App\Models\{Advertisement, Category, User, Comment};
@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
+use PhpParser\Node\Stmt\Catch_;
 
 class AdvertisementController extends Controller
 {
@@ -16,10 +17,10 @@ class AdvertisementController extends Controller
     {
         $currentPage = request()->get('page', 1);
 
-        $ads = Cache::remember('allAds-' . $currentPage, now()->addMinutes(10), function () {
+        $ads = Cache::remember('common-' . $currentPage, now()->addMinutes(10), function () {
             return Advertisement::paginate(6);
         });
-        return view('allAds.index', compact('ads'));
+        return view('common.index', compact('ads'));
     }
     // // find ads with user_id forigen key
     //     public function findAds()
@@ -28,12 +29,9 @@ class AdvertisementController extends Controller
     //         dd( $ads);
     //     }
 
-    public function show(Request $request, $adID)
+    public function show(Request $request, Advertisement $ade)
     {
-        // $id=$request->id;
-        //  dd($id);
-        $ade = Advertisement::find($adID);
         $comments = Comment::where('ads_id', $ade->id)->get();
-        return view('allAds.show', compact('ade', 'comments'));
+        return view('common.show', compact('ade', 'comments'));
     }
 }

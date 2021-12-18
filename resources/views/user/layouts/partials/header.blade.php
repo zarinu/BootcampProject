@@ -9,6 +9,9 @@
        <div class="collapse navbar-collapse" id="mynavbar">
         <ul class="navbar-nav">
             <li class="nav-item">
+              <a class="nav-link" href="{{route('home')}}">Home</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="{{route('ads.create')}}">CreateNewAds</a>
             </li>
             <li class="nav-item">

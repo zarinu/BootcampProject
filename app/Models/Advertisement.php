@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Http\Controllers\Front\AdvertisementController;
-use App\Http\Controllers\Panel\UserPanel\AdvertisementController as UserPanelAdvertisementController;
+use App\Http\Controllers\user\AdvertisementController as UserAdvertisementController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,7 +26,7 @@ class Advertisement extends Model
         'user_id',
     ];
 
-    public static function findNcheck(UserPanelAdvertisementController $userController, $action, $adID)
+    public static function findNcheck(UserAdvertisementController $userController, $action, $adID)
     {
         $ade = Advertisement::find($adID);
         if (empty($ade)) abort(404);

@@ -11,11 +11,11 @@
 </head>
 <body>
 
-        @include('partials.header')
+        @include('layouts.partials.header')
         <div class="container-fluid p-3  border ">
             <div class="row">
                 <div class="col-sm-2">
-                    @include('partials.sideBar')
+                    @include('layouts.partials.sideBar')
 
                 </div>
                 <div class="col-sm-10">
@@ -23,7 +23,7 @@
                 </div>
               </div>
         </div>
-        @include('partials.footer')
+        @include('layouts.partials.footer')
 
 </body>
 </html>
