@@ -21,7 +21,7 @@
                             <br>
                             <div class="form-group" >
                                 <label for="title">title</lable>
-                                    <input  style="width:680px;" class="form-control @error('title') form-control-invalid @enderror " name="category" type="text" id="category" value="{{old('title')}}" required autocomplete="title">
+                                    <input  style="width:680px;" class="form-control @error('title') form-control-invalid @enderror " name="title" type="text" id="title" value="{{old('title')}}" required autocomplete="title">
 
                                     {{-- <input class="form-control @error('title') form-control-invalid @enderror " name="title" type="text" id="title" value="{{old('title')}}" required autocomplete="title"> --}}
                                     @error('title')
