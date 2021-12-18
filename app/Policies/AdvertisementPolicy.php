@@ -31,6 +31,7 @@ class AdvertisementPolicy
     public function view(User $user, Advertisement $advertisement)
     {
         //
+        return $user->id === $advertisement->user_id;
     }
 
     /**
@@ -68,30 +69,5 @@ class AdvertisementPolicy
     {
         //
         return $user->id === $advertisement->user_id;
-    }
-
-    /**
-     * Determine whether the user can restore the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Advertisement  $advertisement
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function restore(User $user, Advertisement $advertisement)
-    {
-        //
-        return $user->id === $advertisement->user_id;
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Advertisement  $advertisement
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function forceDelete(User $user, Advertisement $advertisement)
-    {
-        //
     }
 }

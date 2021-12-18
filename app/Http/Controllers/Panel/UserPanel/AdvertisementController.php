@@ -20,73 +20,52 @@ class AdvertisementController extends Controller
     }
     public function show($adID)
     {
-        $ade = Advertisement::where('user_id', Auth::user()->id)->where('id', $adID)->first();
-        Log::info('Showing the user profile for user: '. Auth::user()->id);
-        //check if this $ade does not exist
-        if (empty($ade)) abort(404);
+        $ade = Advertisement::findNcheck($this, 'view', $adID);
+        Log::info('Showing the user advertisement for user: '. Auth::user()->id . 'on ad with this id' . $adID);
         return view('userAds.show', compact('ade'));
     }
     public function create(Request $request)
     {
-
-        $categories = Category::all();
-        return view('userAds.create')->with(['categories' => $categories]);
-
+        return view('userAds.create');
     }
     public function store(AdeStoreRequest $request)
     {
         $ade = Advertisement::create($request->all());
-
         if ($ade->save()) {
-            return redirect('/ads/' . $ade->id);
+            return redirect()->route('ads.show', ['adID' => $ade->id]);
         }
-
-        return; // 422
+        abort(422);
     }
     public function edit($adID)
     {
-        //inja bayad permission mojod and ejaze bedam
-        $ade = Advertisement::where('user_id', Auth::user()->id)->where('id', $adID)->first();
-        if (empty($ade)) abort(404);
-
+        $ade = Advertisement::findNcheck($this, 'update', $adID);
         return view('edit', compact('ade'));
     }
     public function update(AdeStoreRequest $request, $adID)
     {
-        $ade = Advertisement::where('user_id', Auth::user()->id)->where('id', $adID)->first();
-        if (empty($ade)) abort(404);
-        $this->authorize('update', $ade);
-
+        $ade = Advertisement::findNcheck($this, 'update', $adID);
         $ade->update($request->all());
         if ($ade->save()) {
-            return redirect('/ads/' . $ade->id);
+            return redirect()->route('ads.show', ['adID' => $ade->id]);
         }
 
-        return; // 422
+        abort(422);
     }
     public function delete($adID)
     {
-        //inja bayad permission mojod and ejaze bedam
-        $ade = Advertisement::where('user_id', Auth::user()->id)->where('id', $adID)->first();
-        if (empty($ade)) abort(404);
-
+        $ade = Advertisement::findNcheck($this, 'delete', $adID);
         return view('delete', compact('ade'));
     }
     public function destroy(Request $request, $adID)
     {
-        $ade = Advertisement::where('user_id', Auth::user()->id)->where('id', $adID)->first();
-        if (empty($ade)) abort(404);
-        $this->authorize('delete', $ade);
-
+        $ade = Advertisement::findNcheck($this, 'delete', $adID);
         $ade->delete();
-        return redirect('/');
+        return redirect()->route('ads.index');
     }
     public function logout(Request $request) {
 
         Auth::logout();
-
-        return redirect('/');
-
+        return redirect()->route('ads.index');
     }
 
 }
