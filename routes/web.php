@@ -67,5 +67,8 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('/', [CategoryController::class, 'index'])->name('category.index');
         Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
         Route::post('/', [CategoryController::class, 'store'])->name('category.store');
+        Route::get('/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
+        Route::put('/{id}', [CategoryController::class, 'update'])->name('category.update');
+        Route::get('/{id}/delete', [CategoryController::class, 'delete'])->name('category.delete');
     });
 });

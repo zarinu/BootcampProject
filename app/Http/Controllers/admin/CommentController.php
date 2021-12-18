@@ -10,5 +10,18 @@ use Illuminate\Support\Facades\Auth;
 class CommentController extends Controller
 {
     //
-
+    public function delete(Request $request, $id)
+    {
+        $comment = Comment::findOrFail($id);
+        $comment->delete();
+        return redirect()->route('#');
+    }
+    public function edit(Request $request, $id)
+    {
+        $comment = Comment::findOrFail($id);
+        $comment->update([
+            'body' => $request->body
+        ]);
+        return redirect()->route('#');
+    }
 }
