@@ -28,7 +28,7 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
         // define global by cluser
-        View::composer(['partials.sideBar', 'userAds.*'], function ($view) {
+        View::composer(['*'], function ($view) {
 
             // View::composer(['partials.sideBar', 'userAds.create', 'edit'], function ($view) {
 

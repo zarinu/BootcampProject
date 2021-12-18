@@ -11,7 +11,7 @@
                     {{$ade->price}}
                 </p>
                 <div class="d-flex flex-row ">
-                    <form action="{{route('show', ['adID' => $ade])}}" method="GET">
+                    <form action="{{route('show', ['id' => $ade->id])}}" method="GET">
                         @csrf
                         <input type="hidden"  name="id" value="{{$ade->id}}">
                         <button type="submit" class="btn btn-danger">Show Ads</button>

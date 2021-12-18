@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="container-fluid">
-    @include('partials.headerUserPanel')
+    @include('layouts.partials.header')
         <div class="row">
             {{-- <div class="col-sm-2 mt-3">
                 @include('partials.sideBar')

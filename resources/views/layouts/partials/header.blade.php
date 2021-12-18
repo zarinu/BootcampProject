@@ -2,10 +2,10 @@
 <div class="row" style="margin-top:15px;">
     {{-- for button and for example user-icon... --}}
     <div class="col-sm-4 " >
-        <a class="btn  btn-sm btn-danger" style="float: left;margin-right:5px;" href="{{route('ads.create')}}">Create Ads </a>
+        <a class="btn  btn-sm btn-danger" style="float: left;margin-right:5px;" href="{{route('user.create')}}">Create user </a>
         <a href="{{route('home')}}">
 
-        {{-- <a href="{{route('ads.index')}}"> --}}
+        {{-- <a href="{{route('user.index')}}"> --}}
 
             {{-- <span class="fa fa-user" ></span> --}}
             <button class="btn btn-sm "><i class="fa fa-user" style="font-size:18px;margin-left:15px;"></i> Profile</button>
@@ -13,7 +13,7 @@
     </div>
     {{-- for navbar search... --}}
     <div class="col-sm-6">
-        <form action="{{route('ads.search')}}" method="POST">
+        <form action="{{route('user.search')}}" method="POST">
             @csrf
             <input style="width:500px;height:35px;background-color:#EEEDE7;border-radius: 5px;" type="text" placeholder="Search.." name="search">
             <button  class="btn btn-sm"type="submit"><i class="fa fa-search" style="font-size: 18px;"></i></button>
