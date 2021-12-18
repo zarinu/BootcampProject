@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\user\{AdvertisementController as UserController, CommentController,  FavoriteController};
+use App\Http\Controllers\user\{AdvertisementController as UserController, CommentController as CommentUserController,  FavoriteController};
 use App\Http\Controllers\common\{AdvertisementController as CommonController, FilterController};
-use App\Http\Controllers\Panel\AdminPanel\CategoryController;
+use App\Http\Controllers\admin\{CategoryController, commentController as CommentAdminController};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,15 +18,12 @@ use App\Http\Controllers\Panel\AdminPanel\CategoryController;
 */
 
 Auth::routes();
-// Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-
-
 
 Route::middleware('auth')->prefix('user')->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('/', [UserController::class, 'index'])->name('user.index');
     Route::post('/logout', [UserController::class, 'logout'])->name('user.logout');
+
+    Route::get('/', [UserController::class, 'index'])->name('user.index');
     Route::get('/create', [UserController::class, 'create'])->name('user.create');
     Route::get('/{id}', [UserController::class, 'show'])->name('user.show');
     Route::post('/', [UserController::class, 'store'])->name('user.store');
@@ -36,15 +33,21 @@ Route::middleware('auth')->prefix('user')->group(function () {
     Route::delete('/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
     Route::group(['prefix' => '/favorite'], function () {
-        Route::get('/favorite', [FavoriteController::class, 'index'])->name('favorite');
-        Route::post('/storefavorite', [FavoriteController::class, 'store'])->name('storefavorite');
+        Route::get('/', [FavoriteController::class, 'index'])->name('favorite.index');
+        Route::post('/store', [FavoriteController::class, 'store'])->name('favorite.store');
+    });
+
+    Route::prefix('comment')->group(function () {
+        Route::get('/create/{id}', [CommentUserController::class, 'create'])->name('comment.create');
+        Route::post('/', [CommentUserController::class, 'store'])->name('comments.store');
+        //and some mooooooooooooooooore
     });
 });
 // route for common
 Route::group(['prefix' => '/'], function () {
     Route::get('/', [CommonController::class, 'index'])->name('index');
     Route::get('/{id}', [CommonController::class, 'show'])->name('show');
-    Route::delete('/search', [UserController::class, 'search'])->name('user.search');
+    // Route::delete('/search', [UserController::class, 'search'])->name('user.search');
     Route::group(['prefix' => '/filter'], function () {
         Route::get('/category/{id}', [FilterController::class, 'category'])->name('filter.category');
     });
@@ -56,14 +59,10 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     // Route::get('/user', [CommentController::class, '#'])->name('admin.#');
     // Route::post('/comments', [AdminPanelCommentController::class, '#'])->name('admin.#');
     // Route::post('/categories', [CategoryController::class, '#'])->name('comments.#');
-    Route::middleware('auth')->prefix('comment')->group(function () {
-
-        Route::get('/create/{id}', [CommentController::class, 'create'])->name('comments.create');
-        Route::post('/{id}/edit', [CommentController::class, 'edit'])->name('comments.edit');
-        Route::post('/', [CommentController::class, 'store'])->name('comments.store');
-        //and some mooooooooooooooooore
+    Route::prefix('comment')->group(function () {
+        Route::post('/{id}/edit', [CommentAdminController::class, 'edit'])->name('comment.edit');
     });
-    Route::middleware('auth')->prefix('categories')->group(function () {
+    Route::prefix('category')->group(function () {
         // Route::post('/category/{id}', [CategoryController::class, 'select'])->name('user.select');
         Route::get('/', [CategoryController::class, 'index'])->name('category.index');
         Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
