@@ -12,10 +12,16 @@
               <a class="nav-link" href="{{route('home')}}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{route('user.create')}}">CreateNewuser</a>
+                <a class="nav-link" href="{{route('index')}}">AllAds</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('user.create')}}">NewAds</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('user.index', $adID=Auth::user()->id)}}">Myuser</a>
+                <a class="nav-link" href="#">MyComments</a>
+              </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('user.index', $adID=Auth::user()->id)}}">MyAds</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Favorite</a>
