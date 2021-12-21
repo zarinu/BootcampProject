@@ -16,6 +16,9 @@
     </div>
 </div>
 @endforeach
+@if(empty($ads->toArray()['data']))
+<h4>there`s nothing yet ...<h4>
+@endif
 <ul class="pagination justify-content-center" style="margin:20px 0">
     <li class="page-item">{{$ads->links()}}</li>
 </ul>
