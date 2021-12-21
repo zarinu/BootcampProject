@@ -1,4 +1,4 @@
-@extends('layouts.masterUserPanel')
+@extends('layouts.master')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -9,7 +9,7 @@
                     <div>
                         {{-- <p>{{$id->category_id->name}}</p> --}}
                     </div>
-                    <form action="{{route('ads.store')}}" method="POST">
+                    <form action="{{route('user.store')}}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="sel1">Select your Category:</label>
