@@ -26,6 +26,32 @@ class Advertisement extends Model
         'user_id',
     ];
 
+    private static function convertTime($zaman)
+    {
+        $time = time() - strtotime($zaman); // to get the time since that moment
+        $time = ($time < 1) ? 1 : $time;
+        $tokens = array(
+            31536000 => 'year',
+            2592000 => 'month',
+            604800 => 'week',
+            86400 => 'day',
+            3600 => 'hour',
+            60 => 'minute',
+            1 => 'second'
+        );
+
+        foreach ($tokens as $unit => $text) {
+            if ($time < $unit) continue;
+            $numberOfUnits = floor($time / $unit);
+            $resault = $numberOfUnits . ' ' . $text . (($numberOfUnits > 1) ? 's' : '');
+            return $resault . ' ago';
+        }
+    }
+
+    public function getCreated_at()
+    {
+        return Advertisement::convertTime($this->created_at);
+    }
     public static function findNcheck(UserAdvertisementController $userController, $action, $adID)
     {
         $ade = Advertisement::find($adID);
