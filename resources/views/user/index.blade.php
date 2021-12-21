@@ -1,29 +1,35 @@
 @extends('user.layouts.master')
 @section('content')
      @foreach ($ads as $ade)
-    <div class="d-inline-flex p-2">
-        <div class="card " style="width:250px;">
-            <div class="card-body">
-                <h3 class="card-title">{{$ade->title}}</h3>
-                <hr>
-                <p class="card-text">{{$ade->desc}}
+    <div class="pt-2">
+        <div class="card ">
+
+            <div class="card-header">
+                <h3 class="card-title"> <p>title: {{$ade->title}} </p></h3>
+                {{-- <p class="card-text">{{$ade->desc}} --}}
+            </div>
+                <div class="card-body ">
+                    <p>address: {{$ade->adress}}</p>
                    <hr>
-                    {{$ade->price}}
-                </p>
-                <div class="d-flex flex-row ">
-                    <form action="{{route('user.show', ['id' => $ade])}}" method="GET">
-                        @csrf
-                        <input type="hidden"  name="id" value="{{$ade->id}}">
-                        <button type="submit" class="btn btn-danger">Show Ads</button>
-                    </form>
-                    <form action="{{route('favorite.store', ['id' => $ade])}}" method="post">
+                   <p>price: {{$ade->price}}</p>
+                    <div class="d-inline-flex btn-group">
+                            <form action="{{route('user.show', ['id' => $ade])}}" method="GET">
+                                @csrf
+                                <input type="hidden"  name="id" value="{{$ade->id}}">
+                                <button type="submit" class="btn btn-secondary " style="margin-right: 50px">Show Ads</button>
+                            </form>
+                        <a href="#">
+                            <button type="button" class="btn btn-secondary">Managment Ads</button>
+                        </a>
+                    </div>
+                    {{-- <form action="{{route('favorite.store', ['id' => $ade])}}" method="post">
                         @csrf
                         <input type="hidden"  name="ade-id" value="{{$ade->id}}">
                         <button type="submit"  style="margin-left:75px" class="btn btn-danger"><i class="fa fa-heart-o" aria-hidden="true"></i>
                         </button>
-                    </form>
+                    </form> --}}
                 </div>
-            </div>
+
         </div>
     </div>
     @endforeach
