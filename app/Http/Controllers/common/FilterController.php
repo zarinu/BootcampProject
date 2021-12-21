@@ -11,6 +11,6 @@ class FilterController extends Controller
     public function category($id)
     {
         $ads = Advertisement::where('category_id', $id)->paginate(8);
-        return view('common.filters.category', compact('ads'));
+        return view('common.index', compact('ads'));
     }
 }
