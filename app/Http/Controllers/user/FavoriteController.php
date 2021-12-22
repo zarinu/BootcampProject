@@ -25,7 +25,7 @@ class FavoriteController extends Controller
         $fav = Favorite::where('user_id', Auth::user()->id)->pluck('ads_id')->toArray();
         $ads = Advertisement::findMany($fav);
 
-        return(view('userAds.index', compact('ads')));
+        return(view('user.favorite.index', compact('ads')));
     }
 
 }

@@ -35,9 +35,12 @@ Route::middleware('auth')->prefix('user')->group(function () {
     Route::group(['prefix' => '/favorite'], function () {
         Route::get('/', [FavoriteController::class, 'index'])->name('favorite.index');
         Route::get('/store', [FavoriteController::class, 'store'])->name('favorite.store');
+        Route::get('/allU', [FavoriteController::class, 'index'])->name('favorite.index');
+        Route::post('/store', [FavoriteController::class, 'store'])->name('favorite.store');
     });
 
     Route::prefix('comment')->group(function () {
+        Route::get('/allU', [CommentUserController::class, 'index'])->name('comment.index');
         Route::get('/create/{id}', [CommentUserController::class, 'create'])->name('comment.create');
         Route::post('/', [CommentUserController::class, 'store'])->name('comment.store');
         //and some mooooooooooooooooore
