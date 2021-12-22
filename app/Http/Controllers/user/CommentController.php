@@ -9,23 +9,20 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-    //
+    public function index()
+    {
+        return view('user.comment.create', compact('id', 'categories'));
+    }
     public function create($id)
     {
-        // $coments = Comment::where('user_id', Auth::user()->id)->get();
-        $categories = Category::all();
-        return view('allAds.comments.create', compact('id', 'categories'));
+        return view('user.comment.create', compact('id'));
     }
     public function store(Request $request)
     {
-        $comment = new Comment();
-        $comment->body = $request->body;
-        $comment->ads_id = $request->id;
-        $comment->user_id = Auth::user()->id;
-        $comment->is_status = false;
+        $comment = Comment::create($request->all());
 
         if ($comment->save()) {
-            return redirect('/' . $comment->ads_id);
+            return redirect()->route('show', ['id' => $comment->ads_id]);
         }
 
         return; // 422
