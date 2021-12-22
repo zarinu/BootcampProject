@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{asset('js/app.js')}}" ></link>
     <script src="{{ asset('js/app.js') }}"></script>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <title></title>
+    <title>{{config('app.name')}}</title>
 </head>
 <body>
     <div class="container-fluid">
