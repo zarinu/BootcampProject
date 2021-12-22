@@ -11,7 +11,8 @@ class CommentController extends Controller
 {
     public function index()
     {
-        return view('user.comment.create', compact('id', 'categories'));
+        $comments = Auth::user()->comments;
+        return view('user.comment.index', compact('comments'));
     }
     public function create($id)
     {
