@@ -1,12 +1,22 @@
-@extends('layouts.master')
+@extends('user.layouts.master')
 @section('content')
-<div>
-    <p>welcome {{Auth::user()->name}}</p>
-    <form action="{{route('ads.destroy', ['adID' => $ade->id])}}" method="POST">
-        @csrf
-        @method('DELETE')
-        <h3>are you sure to delete this advertisement, if you delete this not exist any more haaaa</h3>
-        <input type="submit">
-    </form>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 mt-5 mb-3">
+            <div class="card">
+                <div class="card-header">Delete Advertisement</div>
+                <div class="card-body">
+                    <h5><i>are you sure you want delete this advertisement? if you delete it isn`t exist any more!</i></h5>
+                    <h6>with this title : {{$ade->title}} and this price : {{$ade->price}}</h6>
+                    <br>
+                    <form action="{{route('user.destroy', ['id' => $ade->id])}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" class="btn btn-danger" style="margin-left: 300px;" value="delete">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
