@@ -11,35 +11,13 @@
             <div class="d-flex flex-column ">
                 <h5>{{$ade->getCreated_at()}} | {{$ade->adress}} | {{$ade->category->name}}</h5><br>
                 <h6>moblie number : {{$ade->mobileNo}} | price : {{$ade->price}} |
-                    <a href="{{route('favorite.store')}}">
-                        <button type="submit" class="btn btn-warning" data-toggle="modal" data-target="#myModal">
-                            Favorite This
-                        </button>
-                    </a>
-                        <!-- The Modal -->
-                        <div class="modal" id="myModal">
-                            <div class="modal-dialog">
-                            <div class="modal-content">
-
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                <h4 class="modal-title">منتخب ها</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-
-                                <!-- Modal body -->
-                                <div class="modal-body">
-                                با موفقیت به منتخب ها اضافه شد.
-                                </div>
-
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                </div>
-
-                            </div>
-                            </div>
-                        </div>
+                        <form action="{{route('favorite.store')}}" method="POST">
+                             @csrf
+                            <input type="hidden" value="{{$ade->id}}" name='ads_id'>
+                            <button type="submit" class="btn btn-warning" >
+                                    Favorite This
+                            </button>
+                        </form>
                     <a href="#comments">Commnets</a>
                 </h6><br>
                 <p><strong>description : </strong>{{$ade->desc}}</p>
