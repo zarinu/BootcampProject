@@ -13,11 +13,17 @@ use Illuminate\Support\Facades\Auth;
 class FavoriteController extends Controller
 {
     //
-    public function store() {
+    public function store(Request $request) {
+        $request->validat([
+            'user_id'=>'required',
+            'ads_id'=>'required',
+        ]);
+        $fav=Favorite::where('user_id', Auth::user()->id)->pluck('ads_id')->toArray()->create([
+            'user_id'=> Auth::user()->id,
+            'ads_id'=> $request->id,
+        ]);
+        return view('ok');
 
-        $fav=Favorite::create();
-        return redirect()->route('index')
-                        ->with('success','Add to favorite successfully.');
 
         // return(view('user.index', compact('ads')));
     }
