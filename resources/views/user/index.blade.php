@@ -18,9 +18,6 @@
                                 <input type="hidden"  name="id" value="{{$ade->id}}">
                                 <button type="submit" class="btn btn-secondary " style="margin-right: 50px">Show Ads</button>
                             </form>
-                        <a href="#">
-                            <button type="button" class="btn btn-secondary">Managment Ads</button>
-                        </a>
                     </div>
                     {{-- <form action="{{route('favorite.store', ['id' => $ade])}}" method="post">
                         @csrf
