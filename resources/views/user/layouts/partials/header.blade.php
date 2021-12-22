@@ -18,13 +18,13 @@
               <a class="nav-link" href="{{route('user.create')}}">NewAds</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">MyComments</a>
+                <a class="nav-link" href="{{route('comment.index')}}">MyComments</a>
               </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('user.index', $adID=Auth::user()->id)}}">MyAds</a>
+                <a class="nav-link" href="{{route('user.index')}}">MyAds</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Favorite</a>
+              <a class="nav-link" href="{{route('favorite.index')}}">MyFavoriteAds</a>
             </li>
        </div>
         {{-- search bar nav --}}
