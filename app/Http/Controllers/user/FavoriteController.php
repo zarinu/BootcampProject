@@ -2,22 +2,24 @@
 
 namespace App\Http\Controllers\user;
 
-use App\Models\Advertisement;
+use App\Models\User;
 use App\Models\Favorite;
 use Illuminate\Http\Request;
+use App\Models\Advertisement;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class FavoriteController extends Controller
 {
     //
-    public function store(Request $request) {
-        Favorite::create($request->all());
+    public function store() {
+
+        $fav=Favorite::create();
         return redirect()->route('index')
                         ->with('success','Add to favorite successfully.');
 
-        return(view('userAds.index', compact('ads')));
+        // return(view('user.index', compact('ads')));
     }
     public function index() {
         $fav = Favorite::where('user_id', Auth::user()->id)->pluck('ads_id')->toArray();

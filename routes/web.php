@@ -33,6 +33,8 @@ Route::middleware('auth')->prefix('user')->group(function () {
     Route::delete('/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
     Route::group(['prefix' => '/favorite'], function () {
+        Route::get('/', [FavoriteController::class, 'index'])->name('favorite.index');
+        Route::get('/store', [FavoriteController::class, 'store'])->name('favorite.store');
         Route::get('/allU', [FavoriteController::class, 'index'])->name('favorite.index');
         Route::post('/store', [FavoriteController::class, 'store'])->name('favorite.store');
     });
@@ -51,6 +53,7 @@ Route::group(['prefix' => '/'], function () {
     Route::delete('/search', [UserController::class, 'search'])->name('user.search');
     Route::group(['prefix' => '/filter'], function () {
         Route::get('/category/{id}', [FilterController::class, 'category'])->name('filter.category');
+        Route::get('/favorite', [FilterController::class, 'favoritest'])->name('filter.favoritest');
     });
 });
 

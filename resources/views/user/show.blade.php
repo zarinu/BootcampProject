@@ -21,13 +21,13 @@
         </div>
         <div >
             <div class="btn-group" style="margin-top: 50px;">
-                <a href="{{route('user.index')}}">
-                    <button type="button" class="btn btn-block" style="background-color:#E7D2CC ">Click For Veiw All user</button>
+                <a href="#">
+                    <button type="button" class="btn btn-block  btn-secondary">Edit</button>
                 </a>
             </div>
             <div class="btn-group" style="margin-top: 50px;">
-                <a href="{{route('user.index')}}">
-            <button type="button" class="btn btn-danger btn-block">Click For Veiw All user</button>
+                <a href="#">
+            <button type="button" class="btn btn-danger btn-block">Delete</button>
                 </a>
             </div>
         </div>
