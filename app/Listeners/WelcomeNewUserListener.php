@@ -4,6 +4,8 @@ namespace App\Listeners;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class WelcomeNewUserListener
 {
@@ -26,6 +28,6 @@ class WelcomeNewUserListener
     public function handle($event)
     {
         //
-        dd($event);
+        Log::info('register for user: '. $event->user->id . ' with name : '. $event->user->name);
     }
 }
