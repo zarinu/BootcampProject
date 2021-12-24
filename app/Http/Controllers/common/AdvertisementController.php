@@ -5,8 +5,6 @@ namespace App\Http\Controllers\common;
 use App\Http\Controllers\Controller;
 use App\Models\{Advertisement, Category, User, Comment};
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
 
 class AdvertisementController extends Controller

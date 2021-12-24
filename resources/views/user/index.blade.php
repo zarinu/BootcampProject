@@ -15,19 +15,10 @@
             <hr>
             <p>price: {{$ade->price}}</p>
             <div class="d-inline-flex btn-group">
-                <form action="{{route('user.show', ['id' => $ade])}}" method="GET">
-                    @csrf
-                    <input type="hidden" name="id" value="{{$ade->id}}">
+                <a href="{{route('user.show', ['id' => $ade])}}">
                     <button type="submit" class="btn btn-secondary " style="margin-right: 50px">Show Ads</button>
-                </form>
+                </a>
             </div>
-
-            {{-- <form action="{{route('favorite.store', ['id' => $ade])}}" method="post">
-            @csrf
-            <input type="hidden" name="ade-id" value="{{$ade->id}}">
-            <button type="submit" style="margin-left:75px" class="btn btn-danger"><i class="fa fa-heart-o" aria-hidden="true"></i>
-            </button>
-            </form> --}}
         </div>
 
     </div>

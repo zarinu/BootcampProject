@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use Illuminate\Support\Facades\Log;
 
 class AdvertisementController extends Controller
 {
@@ -22,7 +21,6 @@ class AdvertisementController extends Controller
     public function show($id)
     {
         $ade = Advertisement::findNcheck($this, 'view', $id);
-        Log::info('Showing the user advertisement for user: '. Auth::user()->id . 'on ad with this id' . $id);
         return view('user.show', compact('ade'));
     }
     public function create(Request $request)

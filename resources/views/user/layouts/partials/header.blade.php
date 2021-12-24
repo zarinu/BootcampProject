@@ -1,4 +1,5 @@
 <nav class="navbar navbar-expand-sm bg-secondary navbar-dark mt-3">
+<<<<<<< HEAD
   {{-- for user panel setting --}}
   <div>
     <a class="navbar-brand" href="#">
@@ -28,6 +29,7 @@
       </li>
   </div>
   {{-- search bar nav --}}
+
 
   <form class="d-flex justify-content-center mr-5">
     <input class="form-control me-2" type="text" placeholder="Search">
