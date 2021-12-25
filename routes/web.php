@@ -52,7 +52,7 @@ Route::group(['prefix' => '/'], function () {
     Route::delete('/search', [UserController::class, 'search'])->name('user.search');
     Route::group(['prefix' => '/filter'], function () {
         Route::get('/category/{id}', [FilterController::class, 'category'])->name('filter.category');
-        Route::get('/favorite', [FilterController::class, 'favoritest'])->name('filter.favoritest');
+        Route::get('/favoritest', [FilterController::class, 'favoritest'])->name('filter.favoritest');
     });
 });
 
