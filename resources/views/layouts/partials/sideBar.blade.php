@@ -2,7 +2,7 @@
 <h6>Important</h6>
 <ul class="list-group">
     <li class="list-group-item">
-        <a href="#" class="categories">محبوب ترین ها</a>
+        <a href="{{route('filter.favoritest')}}" class="categories">محبوب ترین ها</a>
     </li>
 </ul><br>
 <h6>Category</h6>
