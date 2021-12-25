@@ -12,8 +12,9 @@
                 <h5>{{$ade->getCreated_at()}} | {{$ade->adress}} | {{$ade->category->name}}</h5><br>
                 <h6>moblie number : {{$ade->mobileNo}} | price : {{$ade->price}} |
                         <form action="{{route('favorite.store')}}" method="POST">
-                             @csrf
+                            @csrf
                             <input type="hidden" value="{{$ade->id}}" name='ads_id'>
+                            <input type="hidden" value="{{Auth::id()}}" name='user_id'>
                             <button type="submit" class="btn btn-warning" >
                                     Favorite This
                             </button>

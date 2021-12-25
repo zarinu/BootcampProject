@@ -3,7 +3,7 @@
         {{-- for button and for example user-icon... --}}
         <div class="col-sm-4 ">
             <a class="btn  btn-sm btn-danger" style="float: left;margin-right:5px;" href="{{route('user.create')}}">Create user </a>
-            <a href="{{route('home')}}">
+            <a href="{{route('user.index')}}">
 
                 {{-- <a href="{{route('user.index')}}"> --}}
 
