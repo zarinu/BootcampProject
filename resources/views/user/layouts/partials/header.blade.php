@@ -1,5 +1,4 @@
 <nav class="navbar navbar-expand-sm bg-secondary navbar-dark mt-3">
-<<<<<<< HEAD
   {{-- for user panel setting --}}
   <div>
     <a class="navbar-brand" href="#">
