@@ -57,7 +57,7 @@ Route::group(['prefix' => '/'], function () {
     });
 });
 
-Route::middleware('auth')->prefix('admin')->group(function () {
+Route::middleware('admin')->prefix('admin')->group(function () {
     // Route::get('/home/{id}', [CommentController::class, 'create'])->name('admin.create');
     // Route::get('/users', [CommentController::class, '#'])->name('admin.#');
     // Route::get('/user', [CommentController::class, '#'])->name('admin.#');
