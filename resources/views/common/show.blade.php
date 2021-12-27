@@ -11,14 +11,24 @@
             <div class="d-flex flex-column ">
                 <h5>{{$ade->getCreated_at()}} | {{$ade->adress}} | {{$ade->category->name}}</h5><br>
                 <h6>moblie number : {{$ade->mobileNo}} | price : {{$ade->price}} |
+                    <div class='d-inline-flex'>
                         <form action="{{route('favorite.store')}}" method="POST">
                             @csrf
                             <input type="hidden" value="{{$ade->id}}" name='ads_id'>
                             <input type="hidden" value="{{Auth::id()}}" name='user_id'>
-                            <button type="submit" class="btn btn-warning" >
-                                    Favorite This
+                            <button type="submit" class="btn btn-secondery" id="fav_btn">
+                                <i class="fa fa-heart" >favorite</i>
                             </button>
                         </form>
+                        <form action="{{route('favorite.delete')}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="hidden" value="{{$ade->id}}" name='ads_id'>
+                            <button type="submit" class="btn btn-secondery" id="unfav_btn">
+                                <i class="fa fa-heart-o">unfavorite</i>
+                            </button>
+                        </form>
+                    </div>
                     <a href="#comments">Commnets</a>
                 </h6><br>
                 <p><strong>description : </strong>{{$ade->desc}}</p>
