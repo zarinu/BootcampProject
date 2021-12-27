@@ -35,6 +35,7 @@ Route::middleware('auth')->prefix('user')->group(function () {
     Route::group(['prefix' => '/favorite'], function () {
         Route::get('/', [FavoriteController::class, 'index'])->name('favorite.index');
         Route::post('/store', [FavoriteController::class, 'store'])->name('favorite.store');
+        Route::delete('/delete', [FavoriteController::class, 'delete'])->name('favorite.delete');
         Route::get('/allU', [FavoriteController::class, 'index'])->name('favorite.index');
     });
 

@@ -14,15 +14,14 @@ class FavoriteController extends Controller
 {
     //
     public function store(Request $request) {
-        // $request->validat([
-        //     'user_id'=>'required',
-        //     'ads_id'=>'required',
-        // ]);
         $fav=Favorite::create($request->all());
-       dd($fav);
+        return redirect()->route('favorite.index');
 
-
-        // return(view('user.index', compact('ads')));
+    }
+    public function delete(Request $request) {
+        $adId=$request->input('ads_id');
+        $userid = Favorite::where('ads_id',$adId)->delete();
+        return redirect()->route('show',[$adId]);
     }
     public function index() {
         $fav = Favorite::where('user_id', Auth::user()->id)->pluck('ads_id')->toArray();

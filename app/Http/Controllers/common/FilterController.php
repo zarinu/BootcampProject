@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\common;
 
-use App\Http\Controllers\Controller;
-use App\Models\Advertisement;
+use App\Models\Favorite;
 use Illuminate\Http\Request;
+use App\Models\Advertisement;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class FilterController extends Controller
 {
@@ -16,7 +18,8 @@ class FilterController extends Controller
 
     public function favoritest()
     {
-        $ads = Advertisement::paginate(6);
+        $adsId=Favorite::get()->mode('ads_id');
+        $ads = Advertisement::where('id', $adsId)->paginate(8);
         return view('common.index', compact('ads'));
     }
 }
