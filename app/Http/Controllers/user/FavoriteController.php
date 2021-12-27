@@ -4,19 +4,28 @@ namespace App\Http\Controllers\user;
 
 use App\Models\User;
 use App\Models\Favorite;
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use App\Models\Advertisement;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Exists;
+use PHPUnit\Framework\Constraint\IsEmpty;
 
 class FavoriteController extends Controller
 {
     //
     public function store(Request $request) {
-        $fav=Favorite::create($request->all());
-        return redirect()->route('favorite.index');
-
+        $adId=$request->input('ads_id');
+        $userId=$request->input('user_id');
+        $fav=Favorite::where('user_id',$userId)->get()->isNotEmpty();
+        if($fav){
+            return redirect()->route('show',[$adId]);
+        }else{
+            $newfav=Favorite::create($request->all());
+            return redirect()->route('show',[$adId]);
+        }
     }
     public function delete(Request $request) {
         $adId=$request->input('ads_id');
