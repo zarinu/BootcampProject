@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\user\{AdvertisementController as UserController, CommentController as CommentUserController,  FavoriteController};
 use App\Http\Controllers\common\{AdvertisementController as CommonController, FilterController};
 use App\Http\Controllers\admin\{CategoryController, commentController as CommentAdminController};
+use App\Http\Controllers\admin\AdminPanelController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,18 +47,8 @@ Route::middleware('auth')->prefix('user')->group(function () {
         //and some mooooooooooooooooore
     });
 });
-// route for common
-Route::group(['prefix' => '/'], function () {
-    Route::get('/', [CommonController::class, 'index'])->name('index');
-    Route::get('/{id}', [CommonController::class, 'show'])->name('show');
-    Route::delete('/search', [UserController::class, 'search'])->name('user.search');
-    Route::group(['prefix' => '/filter'], function () {
-        Route::get('/category/{id}', [FilterController::class, 'category'])->name('filter.category');
-        Route::get('/favoritest', [FilterController::class, 'favoritest'])->name('filter.favoritest');
-    });
-});
-
 Route::middleware('admin')->prefix('admin')->group(function () {
+    Route::get('/', [AdminPanelController::class, 'index'])->name('admin.index');
     // Route::get('/home/{id}', [CommentController::class, 'create'])->name('admin.create');
     // Route::get('/users', [CommentController::class, '#'])->name('admin.#');
     // Route::get('/user', [CommentController::class, '#'])->name('admin.#');
@@ -74,5 +65,15 @@ Route::middleware('admin')->prefix('admin')->group(function () {
         Route::get('/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
         Route::put('/{id}', [CategoryController::class, 'update'])->name('category.update');
         Route::get('/{id}/delete', [CategoryController::class, 'delete'])->name('category.delete');
+    });
+});
+// route for common
+Route::group(['prefix' => '/'], function () {
+    Route::get('/', [CommonController::class, 'index'])->name('index');
+    Route::get('/{id}', [CommonController::class, 'show'])->name('show');
+    Route::delete('/search', [UserController::class, 'search'])->name('user.search');
+    Route::group(['prefix' => '/filter'], function () {
+        Route::get('/category/{id}', [FilterController::class, 'category'])->name('filter.category');
+        Route::get('/favoritest', [FilterController::class, 'favoritest'])->name('filter.favoritest');
     });
 });
