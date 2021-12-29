@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\user\{AdvertisementController as UserController, CommentController as CommentUserController,  FavoriteController};
-use App\Http\Controllers\common\{AdvertisementController as CommonController, FilterController};
+use App\Http\Controllers\user\{AdvertisementController as UserAdController, CommentController as CommentUserAdController,  FavoriteController};
+use App\Http\Controllers\common\{AdvertisementController as CommonAdController, FilterController};
 use App\Http\Controllers\admin\{CategoryController, commentController as CommentAdminController};
 use App\Http\Controllers\admin\AdminPanelController;
 /*
@@ -22,17 +22,18 @@ Auth::routes();
 
 Route::middleware('auth')->prefix('user')->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::post('/logout', [UserController::class, 'logout'])->name('user.logout');
+    Route::post('/logout', [UserAdController::class, 'logout'])->name('logout');
 
-    Route::get('/', [UserController::class, 'index'])->name('user.index');
-    Route::get('/create', [UserController::class, 'create'])->name('user.create');
-    Route::get('/{id}', [UserController::class, 'show'])->name('user.show');
-    Route::post('/', [UserController::class, 'store'])->name('user.store');
-    Route::get('/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
-    Route::put('/{id}', [UserController::class, 'update'])->name('user.update');
-    Route::get('/{id}/delete', [UserController::class, 'delete'])->name('user.delete');
-    Route::delete('/{id}', [UserController::class, 'destroy'])->name('user.destroy');
-
+    Route::group(['prefix' => '/ad'], function () {
+        Route::get('/', [UserAdController::class, 'index'])->name('ad.index');
+        Route::get('/create', [UserAdController::class, 'create'])->name('ad.create');
+        Route::get('/{id}', [UserAdController::class, 'show'])->name('ad.show');
+        Route::post('/', [UserAdController::class, 'store'])->name('ad.store');
+        Route::get('/{id}/edit', [UserAdController::class, 'edit'])->name('ad.edit');
+        Route::put('/{id}', [UserAdController::class, 'update'])->name('ad.update');
+        Route::get('/{id}/delete', [UserAdController::class, 'delete'])->name('ad.delete');
+        Route::delete('/{id}', [UserAdController::class, 'destroy'])->name('ad.destroy');
+    });
     Route::group(['prefix' => '/favorite'], function () {
         Route::get('/', [FavoriteController::class, 'index'])->name('favorite.index');
         Route::post('/store', [FavoriteController::class, 'store'])->name('favorite.store');
@@ -41,9 +42,9 @@ Route::middleware('auth')->prefix('user')->group(function () {
     });
 
     Route::prefix('comment')->group(function () {
-        Route::get('/allU', [CommentUserController::class, 'index'])->name('comment.index');
-        Route::get('/create/{id}', [CommentUserController::class, 'create'])->name('comment.create');
-        Route::post('/', [CommentUserController::class, 'store'])->name('comment.store');
+        Route::get('/allU', [CommentUserAdController::class, 'index'])->name('comment.index');
+        Route::get('/create/{id}', [CommentUserAdController::class, 'create'])->name('comment.create');
+        Route::post('/', [CommentUserAdController::class, 'store'])->name('comment.store');
         //and some mooooooooooooooooore
     });
 });
@@ -72,9 +73,9 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 });
 // route for common
 Route::group(['prefix' => '/'], function () {
-    Route::get('/', [CommonController::class, 'index'])->name('index');
-    Route::get('/{id}', [CommonController::class, 'show'])->name('show');
-    Route::delete('/search', [UserController::class, 'search'])->name('user.search');
+    Route::get('/', [CommonAdController::class, 'index'])->name('index');
+    Route::get('/{id}', [CommonAdController::class, 'show'])->name('show');
+    Route::delete('/search', [UserAdController::class, 'search'])->name('user.search');
     Route::group(['prefix' => '/filter'], function () {
         Route::get('/category/{id}', [FilterController::class, 'category'])->name('filter.category');
         Route::get('/favoritest', [FilterController::class, 'favoritest'])->name('filter.favoritest');
