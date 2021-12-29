@@ -14,11 +14,10 @@ class CategoryController extends Controller
         return view('admin.category.index', compact('categories'));
     }
     // this controller have show, create, update method..
-    // public function show($id){
-
-    //     $category=Category::findOrFail($id);
-    //   return view('ads.ShowCategory',compact('id'));
-    //   }
+    public function show(Category $category)
+    {
+        return view('admin.category.show', compact('category'));
+    }
 
     public function create()
     {

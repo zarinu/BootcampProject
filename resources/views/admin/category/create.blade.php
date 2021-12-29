@@ -1,3 +1,5 @@
+@extends('admin.layouts.master')
+@section('content')
 <div>
     <form action="{{route('category.store')}}" method="POST">
         @csrf
@@ -7,3 +9,4 @@
         <input type="submit">
     </form>
 </div>
+@endsection

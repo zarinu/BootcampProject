@@ -19,4 +19,14 @@ class Category extends Model
     {
         return $this->hasMany(Advertisement::class);
     }
+
+    // public function parent()
+    // {
+    //     return $this->belongsTo(Category::class);
+    // }
+
+    public function childs()
+    {
+        return $this->hasMany(Category::class);
+    }
 }
