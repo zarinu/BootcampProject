@@ -67,7 +67,7 @@
                                     </p>
                                     @enderror
                             </div>
-                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                            <!-- <input type="hidden" name="user_id" value="{{ Auth::user()->id }}"> bbninm mishe age shood toyam bokon-->
                             <button type="submit" class="btn  btn-dark">submit</button>
                     </form>
                 </div>

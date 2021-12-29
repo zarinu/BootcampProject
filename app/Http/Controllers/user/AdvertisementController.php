@@ -29,7 +29,7 @@ class AdvertisementController extends Controller
     }
     public function store(AdvertisementStoreRequest $request)
     {
-        $ade = Advertisement::create($request->all());
+        $ade = Advertisement::create($request->all()+['user_id' => Auth::id()]);
         if ($ade->save()) {
             return redirect()->route('ad.show', ['id' => $ade->id]);
         }
