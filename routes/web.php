@@ -55,7 +55,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     // Route::post('/comments', [AdminPanelCommentController::class, '#'])->name('admin.#');
     // Route::post('/categories', [CategoryController::class, '#'])->name('comments.#');
     Route::prefix('comment')->group(function () {
-        Route::post('/', [CommentAdminController::class, 'index'])->name('comment.index');
+        Route::post('/', [CommentAdminController::class, 'index'])->name('comment.indexix');
         Route::post('/{id}/edit', [CommentAdminController::class, 'edit'])->name('comment.edit');
         Route::post('/{id}/delete', [CommentAdminController::class, 'delete'])->name('comment.delete');
     });
