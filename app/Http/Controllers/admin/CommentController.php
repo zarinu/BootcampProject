@@ -14,7 +14,7 @@ class CommentController extends Controller
     {
         $comment = Comment::findOrFail($id);
         $comment->delete();
-        return redirect()->route('#');
+        return redirect()->back();
     }
     public function edit(Request $request, $id)
     {

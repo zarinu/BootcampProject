@@ -3,7 +3,7 @@
         <p>hi admin ^_^</p>
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#">AdminPanel</a>
+                <a class="nav-link" href="{{route('admin.index')}}">AdminPanel</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">AllAds</a>

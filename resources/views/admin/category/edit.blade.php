@@ -1,5 +1,5 @@
 <div>
-    <form action="{{route('category.update', ['id' => $category->id])}}" method="POST">
+    <form action="{{route('category.update', ['category' => $category->id])}}" method="POST">
         @csrf
         @method('PUT')
         enter persian name : <input type="text" name="name" required autocomplete="name" placeholder="{{$category->name}}"><br>

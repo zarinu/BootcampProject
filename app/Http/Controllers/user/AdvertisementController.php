@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\user;
 
-use App\Http\Requests\AdeStoreRequest;
+use App\Http\Requests\AdvertisementStoreRequest;
 use App\Models\{Advertisement, Comment};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +27,7 @@ class AdvertisementController extends Controller
     {
         return view('user.create');
     }
-    public function store(AdeStoreRequest $request)
+    public function store(AdvertisementStoreRequest $request)
     {
         $ade = Advertisement::create($request->all());
         if ($ade->save()) {
@@ -40,7 +40,7 @@ class AdvertisementController extends Controller
         $ade = Advertisement::findNcheck($this, 'update', $id);
         return view('user.edit', compact('ade'));
     }
-    public function update(AdeStoreRequest $request, $id)
+    public function update(AdvertisementStoreRequest $request, $id)
     {
         $ade = Advertisement::findNcheck($this, 'update', $id);
         $ade->update($request->all());

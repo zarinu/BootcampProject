@@ -1,6 +1,5 @@
 @extends('admin.layouts.master')
 @section('content')
-{{dd($category->childs)}}
 <div class="card">
     <div class="card-header">
         <div class="d-inline-flex p-3">
@@ -10,7 +9,7 @@
     <div class="card-body">
         <div class="d-flex flex-column ">
             <p>english name : {{$category->name_en}}</p>
-            <p>parent directory name : {{$category->parent_id}}</p>
+            <p>parent id : {{$category->parent_id}}</p>
         </div>
         <div>
             <div class="btn-group" style="margin-top: 50px;">
