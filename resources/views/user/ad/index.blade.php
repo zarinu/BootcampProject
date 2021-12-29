@@ -15,7 +15,7 @@
             <hr>
             <p>price: {{$ade->price}}</p>
             <div class="d-inline-flex btn-group">
-                <a href="{{route('user.show', ['id' => $ade])}}">
+                <a href="{{route('ad.show', ['id' => $ade])}}">
                     <button type="submit" class="btn btn-secondary " style="margin-right: 50px">Show Ads</button>
                 </a>
             </div>

@@ -9,7 +9,7 @@
                     <div>
                         {{-- <p>{{$id->category_id->name}}</p> --}}
                     </div>
-                    <form action="{{route('user.store')}}" method="POST">
+                    <form action="{{route('ad.store')}}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="sel1">Select your Category:</label>

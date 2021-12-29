@@ -20,12 +20,12 @@
         </div>
         <div >
             <div class="btn-group" style="margin-top: 50px;">
-                <a href="{{route('user.edit', ['id' => $ade->id])}}">
+                <a href="{{route('ad.edit', ['id' => $ade->id])}}">
                     <button type="button" class="btn btn-block  btn-secondary">Edit</button>
                 </a>
             </div>
             <div class="btn-group" style="margin-top: 50px;">
-                <a href="{{route('user.delete', ['id' => $ade->id])}}">
+                <a href="{{route('ad.delete', ['id' => $ade->id])}}">
             <button type="button" class="btn btn-danger btn-block">Delete</button>
                 </a>
             </div>

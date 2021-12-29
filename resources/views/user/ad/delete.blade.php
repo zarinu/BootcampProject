@@ -9,7 +9,7 @@
                     <h5><i>are you sure you want delete this advertisement? if you delete it isn`t exist any more!</i></h5>
                     <h6>with this title : {{$ade->title}} and this price : {{$ade->price}}</h6>
                     <br>
-                    <form action="{{route('user.destroy', ['id' => $ade->id])}}" method="POST">
+                    <form action="{{route('ad.destroy', ['id' => $ade->id])}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <input type="submit" class="btn btn-danger" style="margin-left: 300px;" value="delete">

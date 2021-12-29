@@ -9,7 +9,7 @@
                     <div>
                         {{-- <p>{{$id->category_id->name}}</p> --}}
                     </div>
-                    <form action="{{route('user.update', ['id' => $ade->id])}}" method="POST">
+                    <form action="{{route('ad.update', ['id' => $ade->id])}}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="form-group">

@@ -15,13 +15,13 @@
         <a class="nav-link" href="{{route('index')}}">AllAds</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{route('user.create')}}">NewAds</a>
+        <a class="nav-link" href="{{route('ad.create')}}">NewAds</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{route('comment.index')}}">MyComments</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{route('user.index')}}">MyAds</a>
+        <a class="nav-link" href="{{route('ad.index')}}">MyAds</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{route('favorite.index')}}">MyFavoriteAds</a>

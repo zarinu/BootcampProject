@@ -75,7 +75,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 Route::group(['prefix' => '/'], function () {
     Route::get('/', [CommonAdController::class, 'index'])->name('index');
     Route::get('/{id}', [CommonAdController::class, 'show'])->name('show');
-    Route::delete('/search', [UserAdController::class, 'search'])->name('user.search');
+    Route::delete('/search', [UserAdController::class, 'search'])->name('ad.search');
     Route::group(['prefix' => '/filter'], function () {
         Route::get('/category/{id}', [FilterController::class, 'category'])->name('filter.category');
         Route::get('/favoritest', [FilterController::class, 'favoritest'])->name('filter.favoritest');
