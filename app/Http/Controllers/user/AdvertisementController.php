@@ -29,7 +29,7 @@ class AdvertisementController extends Controller
     }
     public function store(AdvertisementStoreRequest $request)
     {
-        $ade = Advertisement::create($request->all()+['user_id' => Auth::id()]);
+        $ade = Advertisement::create($request->validated()+['user_id' => Auth::id()]);
         if ($ade->save()) {
             return redirect()->route('ad.show', ['id' => $ade->id]);
         }
@@ -43,7 +43,7 @@ class AdvertisementController extends Controller
     public function update(AdvertisementStoreRequest $request, $id)
     {
         $ade = Advertisement::findNcheck($this, 'update', $id);
-        $ade->update($request->all());
+        $ade->update($request->validated());
         if ($ade->save()) {
             return redirect()->route('ad.show', ['id' => $ade->id]);
         }

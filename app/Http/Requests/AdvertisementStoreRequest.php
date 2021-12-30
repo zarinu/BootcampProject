@@ -44,7 +44,7 @@ class AdvertisementStoreRequest extends FormRequest
             'adress' => 'required|max:50',
             'price' => 'max:11|min:4',
             'mobileNo' => 'max:13|min:10',
-            'category' => 'between:1,12',
+            'category_id' => 'between:1,12',
         ];
     }
     public function messages()
