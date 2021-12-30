@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Advertisement;
+use Illuminate\Support\Str;
 
 class AdvertisementStoreRequest extends FormRequest
 {
@@ -14,9 +15,20 @@ class AdvertisementStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        // $nana = Advertisement::find($this->route('adID'));
-        // dd($nana->id);
         return true;
+    }
+
+    /**
+     * Prepare the data for validation.
+     *
+     * @return void
+     */
+    protected function prepareForValidation()
+    {
+        // this was just for test and i don't want remove these lines
+        // $this->merge([
+        //     'mobileNo' => $this->mobileNo . 'lala',
+        // ]);
     }
 
     /**
@@ -30,8 +42,8 @@ class AdvertisementStoreRequest extends FormRequest
             'title' => 'required|string|max:50|min:4',
             'desc' => 'required|string|max:250|min:7',
             'adress' => 'required|max:50',
-            'price' => 'size:3-5',
-            'mobileNo' => 'size:12',
+            'price' => 'max:11|min:4',
+            'mobileNo' => 'max:13|min:10',
             'category' => 'between:1,12',
         ];
     }
