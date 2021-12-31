@@ -20,13 +20,13 @@ class Category extends Model
         return $this->hasMany(Advertisement::class);
     }
 
-    // public function parent()
-    // {
-    //     return $this->belongsTo(Category::class);
-    // }
+    public function parent()
+    {
+        return $this->belongsTo(Category::class, 'parent_id');
+    }
 
     public function childs()
     {
-        return $this->hasMany(Category::class);
+        return $this->hasMany(Category::class, 'parent_id');
     }
 }
