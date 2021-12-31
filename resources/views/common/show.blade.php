@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="card-body">
-            @foreach ($comments as $comment)
+            @foreach ($ade->comments as $comment)
             <p>{{$comment->body}} <strong>Added by : {{$comment->user->name}}</strong></p>
             @endforeach
             <a href="{{route('comment.create', ['id' => $ade->id])}}">Add a comment</a>
