@@ -19,11 +19,10 @@ class CommentController extends Controller
     {
         return view('admin.comment.show', compact('comment'));
     }
-    public function delete(Request $request, $id)
+    public function delete(Comment $comment)
     {
-        $comment = Comment::findOrFail($id);
         $comment->delete();
-        return redirect()->back();
+        return redirect()->route('admin.comment.index');
     }
     public function edit(Request $request, $id)
     {

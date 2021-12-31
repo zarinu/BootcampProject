@@ -7,7 +7,12 @@
     <p>created at : {{$comment->created_at}}</p>
     <p>last update at : {{$comment->updated_at}}</p>
     <a href="{{route('comment.edit', ['comment' => $comment->id])}}">edit this comment</a><br>
-    <a href="{{route('comment.delete', ['comment' => $comment->id])}}">delete this comment</a>
+    <form action="{{route('comment.delete', ['comment' => $comment->id])}}" method="POST">
+        @csrf
+        @method('DELETE')
+        <input type="submit" class="btn btn-danger" style="margin-left: 300px;" value="delete this commnet">
+    </form>
+
     <br>
     <hr>
 </div>
