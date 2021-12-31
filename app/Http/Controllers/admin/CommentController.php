@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Models\{Comment, Category};
+use App\Models\{Comment};
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 class CommentController extends Controller
 {
     //
+    public function index()
+    {
+        $comments = Comment::paginate(5);
+        return view('admin.comment.index', compact('comments'));
+    }
     public function delete(Request $request, $id)
     {
         $comment = Comment::findOrFail($id);

@@ -12,7 +12,7 @@
                 <a class="nav-link" href="{{route('category.index')}}">ManageCategories</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('comment.index')}}">ManageComments</a>
+                <a class="nav-link" href="{{route('admin.comment.index')}}">ManageComments</a>
             </li>
         </ul>
     </div>

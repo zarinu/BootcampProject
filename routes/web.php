@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\user\{AdvertisementController as UserAdController, CommentController as CommentUserAdController,  FavoriteController};
 use App\Http\Controllers\common\{AdvertisementController as CommonAdController, FilterController};
-use App\Http\Controllers\admin\{CategoryController, commentController as CommentAdminController};
+use App\Http\Controllers\admin\{CategoryController, CommentController as CommentAdminController};
 use App\Http\Controllers\admin\AdminPanelController;
 /*
 |--------------------------------------------------------------------------
