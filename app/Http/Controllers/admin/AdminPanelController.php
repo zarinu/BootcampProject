@@ -11,7 +11,7 @@ class AdminPanelController extends Controller
 {
     //
     public function index() {
-        $ads = DB::table('advertisements')->orderBy('id', 'desc')->paginate(8);
+        $ads = Advertisement::paginate(8);
         return view('admin.index', compact('ads'));
     }
 }

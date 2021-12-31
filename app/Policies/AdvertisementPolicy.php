@@ -3,13 +3,19 @@
 namespace App\Policies;
 
 use App\Models\Advertisement;
-use App\Models\User;
+use App\Models\{User, Admin};
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class AdvertisementPolicy
 {
     use HandlesAuthorization;
 
+    public function before(User $user)
+    {
+        if(Admin::isAdmin()) {
+            return true;
+        }
+    }
     /**
      * Determine whether the user can view any models.
      *
