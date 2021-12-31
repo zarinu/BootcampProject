@@ -34,23 +34,17 @@ class CategoryController extends Controller
 
         return; // 422
     }
-    public function edit($id)
+    public function edit(Category $category)
     {
-        $category = Category::findOrFail($id);
         return view('admin.category.edit', compact('category'));
     }
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        $category = Category::findOrFail($id);
-        // $request->validate([
-        //     'name' => 'required'
-        // ]);
         $category->update($request->all());
         return redirect()->route('category.index');
     }
-    public function delete(Request $request, $id)
+    public function delete(Request $request, Category $category)
     {
-        $category = Category::findOrFail($id);
         $category->delete();
         event(new CategoryDeletedEvent($category));
         return redirect()->route('category.index');
