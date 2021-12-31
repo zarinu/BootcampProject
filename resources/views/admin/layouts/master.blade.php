@@ -16,13 +16,6 @@
 <body>
   <div class="container-fluid">
     @include('admin.layouts.partials.header')
-    <br>
-    <form action="{{route('admin.index')}}">
-      <h3 style="color:rebeccapurple">find Advertisement using ID</h3>
-      Admin! pls Enter Ad ID <input type="number" name="ad_id" />
-      <input type="submit">
-    </form><br>
-    <hr>
     @yield('content')
   </div>
 </body>

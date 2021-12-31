@@ -6,6 +6,9 @@
             <a href="{{route('ad.index')}}">
                 <button class="btn btn-sm "><i class="fa fa-user" style="font-size:18px;margin-left:15px;"></i> Profile</button>
             </a>
+            @if(App\Models\Admin::isAdmin(Auth::user()))
+            <a class="nav-link" href="{{route('admin.index')}}">AdminPanel</a>
+            @endif
         </div>
         {{-- for navbar search... --}}
         <div class="col-sm-6">

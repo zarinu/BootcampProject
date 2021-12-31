@@ -1,5 +1,12 @@
 @extends('admin.layouts.master')
 @section('content')
+<br>
+<form action="{{route('admin.index')}}">
+    <h3 style="color:rebeccapurple">find Advertisement using ID</h3>
+    Admin! pls Enter Ad ID <input type="number" name="ad_id" />
+    <input type="submit">
+</form><br>
+<hr>
 
 @if(empty($ads)) <p>not find ad with this id</p>
 @elseif($ads instanceof App\Models\Advertisement)

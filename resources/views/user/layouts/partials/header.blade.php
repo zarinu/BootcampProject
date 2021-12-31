@@ -26,6 +26,11 @@
       <li class="nav-item">
         <a class="nav-link" href="{{route('favorite.index')}}">MyFavoriteAds</a>
       </li>
+      @if(App\Models\Admin::isAdmin(Auth::user()))
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('admin.index')}}">AdminPanel</a>
+      </li>
+      @endif
   </div>
   {{-- search bar nav --}}
 
