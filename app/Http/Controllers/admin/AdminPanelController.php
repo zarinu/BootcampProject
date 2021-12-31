@@ -10,8 +10,11 @@ use Illuminate\Support\Facades\DB;
 class AdminPanelController extends Controller
 {
     //
-    public function index() {
-        $ads = Advertisement::paginate(8);
+    public function index(Request $request) {
+        if($request->ad_id) {
+            $ads = Advertisement::find($request->ad_id);
+        } else
+            $ads = Advertisement::paginate(8);
         return view('admin.index', compact('ads'));
     }
 }
