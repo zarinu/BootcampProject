@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Events\CategoryDeletedEvent;
 
 class CategoryController extends Controller
 {
@@ -55,6 +56,7 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $category->delete();
+        event(new CategoryDeletedEvent($category));
         return redirect()->route('category.index');
     }
 }

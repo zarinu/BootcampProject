@@ -7,7 +7,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 
-class WelcomeNewUserListener
+class SeccessfullCategoryDeletationListener
 {
     /**
      * Create the event listener.
@@ -28,6 +28,6 @@ class WelcomeNewUserListener
     public function handle($event)
     {
         //
-        Log::info('register for user: '. $event->user->id . ' with name : '. $event->user->name);
+        Log::info('deletation for category * '. $event->category->id . ' * with name : '. $event->category->name);
     }
 }
