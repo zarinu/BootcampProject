@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Comment extends Model
 {
@@ -23,5 +24,12 @@ class Comment extends Model
     public function advertisement()
     {
         return $this->belongsTo(Advertisement::class, 'ads_id');
+    }
+
+    protected static function booted()
+    {
+        static::addGlobalScope('desc', function (Builder $builder) {
+            $builder->orderBy('id', 'desc');
+        });
     }
 }
