@@ -7,7 +7,7 @@
     <p>created by : {{$comment->user->name}}</p>
     <p>title Advertisement : {{$comment->advertisement->title}}</p>
     <p>comment body : {{$comment->body}}</p>
-    <a href="#">show this</a>
+    <a href="{{route('admin.comment.show', ['comment' => $comment->id])}}">show this</a>
     <br>
     <hr>
     @endforeach

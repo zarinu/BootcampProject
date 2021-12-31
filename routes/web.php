@@ -52,8 +52,9 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/', [AdminPanelController::class, 'index'])->name('admin.index');
     Route::prefix('comment')->group(function () {
         Route::get('/', [CommentAdminController::class, 'index'])->name('admin.comment.index');
-        Route::post('/{id}/edit', [CommentAdminController::class, 'edit'])->name('comment.edit');
-        Route::post('/{id}/delete', [CommentAdminController::class, 'delete'])->name('comment.delete');
+        Route::get('/{comment}', [CommentAdminController::class, 'show'])->name('admin.comment.show');
+        Route::get('/{comment}/edit', [CommentAdminController::class, 'edit'])->name('comment.edit');
+        Route::delete('/{comment}/delete', [CommentAdminController::class, 'delete'])->name('comment.delete');
     });
     Route::prefix('category')->group(function () {
         // Route::post('/category/{id}', [CategoryController::class, 'select'])->name('user.select');

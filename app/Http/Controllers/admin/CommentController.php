@@ -15,6 +15,10 @@ class CommentController extends Controller
         $comments = Comment::paginate(5);
         return view('admin.comment.index', compact('comments'));
     }
+    public function show(Comment $comment)
+    {
+        return view('admin.comment.show', compact('comment'));
+    }
     public function delete(Request $request, $id)
     {
         $comment = Comment::findOrFail($id);
