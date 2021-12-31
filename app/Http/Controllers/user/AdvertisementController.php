@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Jobs\LogingUserAddAd;
 
 class AdvertisementController extends Controller
 {
@@ -31,6 +32,7 @@ class AdvertisementController extends Controller
     {
         $ade = Advertisement::create($request->validated()+['user_id' => Auth::id()]);
         if ($ade->save()) {
+            $this->logingUserAddAd($request, $ade);
             return redirect()->route('ad.show', ['id' => $ade->id]);
         }
         abort(422);
@@ -66,5 +68,8 @@ class AdvertisementController extends Controller
         Auth::logout();
         return redirect()->route('ad.index');
     }
-
+    public function logingUserAddAd(Request $request, Advertisement $advertisement)
+    {
+        $this->dispatch(new LogingUserAddAd(Auth::user(), $advertisement));
+    }
 }
