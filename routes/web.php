@@ -42,7 +42,7 @@ Route::middleware('auth')->prefix('user')->group(function () {
     });
 
     Route::prefix('comment')->group(function () {
-        Route::get('/allU', [CommentUserAdController::class, 'index'])->name('comment.index');
+        Route::get('/allU', [CommentUserAdController::class, 'index'])->name('user.comment.index');
         Route::get('/create/{id}', [CommentUserAdController::class, 'create'])->name('comment.create');
         Route::post('/', [CommentUserAdController::class, 'store'])->name('comment.store');
         //and some mooooooooooooooooore
@@ -50,13 +50,8 @@ Route::middleware('auth')->prefix('user')->group(function () {
 });
 Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/', [AdminPanelController::class, 'index'])->name('admin.index');
-    // Route::get('/home/{id}', [CommentController::class, 'create'])->name('admin.create');
-    // Route::get('/users', [CommentController::class, '#'])->name('admin.#');
-    // Route::get('/user', [CommentController::class, '#'])->name('admin.#');
-    // Route::post('/comments', [AdminPanelCommentController::class, '#'])->name('admin.#');
-    // Route::post('/categories', [CategoryController::class, '#'])->name('comments.#');
     Route::prefix('comment')->group(function () {
-        Route::post('/', [CommentAdminController::class, 'index'])->name('comment.indexix');
+        Route::get('/', [CommentAdminController::class, 'index'])->name('admin.comment.index');
         Route::post('/{id}/edit', [CommentAdminController::class, 'edit'])->name('comment.edit');
         Route::post('/{id}/delete', [CommentAdminController::class, 'delete'])->name('comment.delete');
     });

@@ -18,7 +18,7 @@
         <a class="nav-link" href="{{route('ad.create')}}">NewAds</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{route('comment.index')}}">MyComments</a>
+        <a class="nav-link" href="{{route('user.comment.index')}}">MyComments</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{route('ad.index')}}">MyAds</a>
