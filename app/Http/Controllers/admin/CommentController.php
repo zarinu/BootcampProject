@@ -24,12 +24,15 @@ class CommentController extends Controller
         $comment->delete();
         return redirect()->route('admin.comment.index');
     }
-    public function edit(Request $request, $id)
+    public function edit(Comment $comment)
     {
-        $comment = Comment::findOrFail($id);
+        return view('admin.comment.edit', compact('comment'));
+    }
+    public function update(Request $request, Comment $comment)
+    {
         $comment->update([
             'body' => $request->body
         ]);
-        return redirect()->route('#');
+        return redirect()->route('admin.comment.show', ['comment' => $comment->id]);
     }
 }

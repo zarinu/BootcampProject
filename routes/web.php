@@ -54,6 +54,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
         Route::get('/', [CommentAdminController::class, 'index'])->name('admin.comment.index');
         Route::get('/{comment}', [CommentAdminController::class, 'show'])->name('admin.comment.show');
         Route::get('/{comment}/edit', [CommentAdminController::class, 'edit'])->name('comment.edit');
+        Route::post('/{comment}/update', [CommentAdminController::class, 'update'])->name('comment.update');
         Route::delete('/{comment}/delete', [CommentAdminController::class, 'delete'])->name('comment.delete');
     });
     Route::prefix('category')->group(function () {
