@@ -1,3 +1,5 @@
+@extends('admin.layouts.master')
+@section('content')
 <div>
     <form action="{{route('category.update', ['category' => $category->id])}}" method="POST">
         @csrf
@@ -8,3 +10,4 @@
         <input type="submit">
     </form>
 </div>
+@endsection

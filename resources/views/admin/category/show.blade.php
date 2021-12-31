@@ -9,7 +9,11 @@
     <div class="card-body">
         <div class="d-flex flex-column ">
             <p>english name : {{$category->name_en}}</p>
-            <p>parent id : {{$category->parent_id}}</p>
+            @if($category->parent)
+            <p>parent name : {{$category->parent->name}}</p>
+            @else
+            <p>this have not a parent because this is a main category</p>
+            @endif
         </div>
         <div>
             <div class="btn-group" style="margin-top: 50px;">
