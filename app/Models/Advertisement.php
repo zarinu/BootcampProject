@@ -6,6 +6,7 @@ use App\Http\Controllers\Front\AdvertisementController;
 use App\Http\Controllers\user\AdvertisementController as UserAdvertisementController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Advertisement extends Model
 {
@@ -25,6 +26,13 @@ class Advertisement extends Model
         'category_id',
         'user_id',
     ];
+
+    protected static function booted()
+    {
+        static::addGlobalScope('desc', function (Builder $builder) {
+            $builder->orderBy('id', 'desc');
+        });
+    }
 
     private static function convertTime($zaman)
     {
