@@ -15,8 +15,7 @@ class AdvertisementController extends Controller
     //
     public function index()
     {
-
-        $ads = Advertisement::where('user_id', Auth::user()->id)->paginate(8);
+        $ads = Auth::user()->advertisement;
         return view('user.ad.index', compact('ads'));
     }
     public function show($id)
@@ -32,7 +31,7 @@ class AdvertisementController extends Controller
     {
         $ade = Advertisement::create($request->validated()+['user_id' => Auth::id()]);
         if ($ade->save()) {
-            $this->logingUserAddAd($request, $ade);
+            $this->logingUserAddAd($ade);
             return redirect()->route('ad.show', ['id' => $ade->id]);
         }
         abort(422);
@@ -45,7 +44,7 @@ class AdvertisementController extends Controller
     public function update(AdvertisementStoreRequest $request, $id)
     {
         $ade = Advertisement::findNcheck($this, 'update', $id);
-        $ade->update($request->validated());
+        $ade->update($request->validated()+['user_id' => Auth::id()]);
         if ($ade->save()) {
             return redirect()->route('ad.show', ['id' => $ade->id]);
         }
@@ -66,9 +65,9 @@ class AdvertisementController extends Controller
     public function logout(Request $request) {
 
         Auth::logout();
-        return redirect()->route('ad.index');
+        return redirect()->route('index');
     }
-    public function logingUserAddAd(Request $request, Advertisement $advertisement)
+    public function logingUserAddAd(Advertisement $advertisement)
     {
         $this->dispatch(new LogingUserAddAd(Auth::user(), $advertisement));
     }
