@@ -15,7 +15,7 @@ class AdvertisementController extends Controller
     //
     public function index()
     {
-        $ads = Auth::user()->advertisement;
+        $ads = Auth::user()->advertisements;
         return view('user.ad.index', compact('ads'));
     }
     public function show($id)
